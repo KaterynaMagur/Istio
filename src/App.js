@@ -1,11 +1,15 @@
-import './App.css';
 import {CssBaseline} from "@mui/material";
+
+import SideBar from "./components/Side-bar/Side-bar";
+
+import './App.css';
 
 
 function App() {
   return (
-   <div>
+   <div className={'app'}>
      <CssBaseline />
+       <div><SideBar/></div>
    </div>
   );
 }
