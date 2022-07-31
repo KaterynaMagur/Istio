@@ -1,34 +1,22 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import ListSubheader from "@mui/material/ListSubheader";
 
 import './Side-bar-style.css';
-import IncomeMenu from "./Income-menu/Income-menu";
-import RetailMenu from "./Retail-menu/Retail-menu";
-import PurposesMenu from "./Purposes-menu/Purposes-menu";
-import List from '@mui/material/List';
+import TextMenu from "./Text-menu/Text-menu";
 
 
 const SideBar = () => {
     return (
         <Box sx={{
-                width: '100%',
-                minHeight: '100vh',
-                background: '#B9F6CA',
-            }}
-        >
-            <div className={'sideBar-text'}>Menu</div>
+            width: 250,
+            minHeight: '100vh',
+            background: '#E0E0E0',
+        }}>
 
-            <List sx={{
-                width: '100%',
-                background: 'red',
-            }}
-            >
-            <IncomeMenu/>
-            <RetailMenu/>
-            <PurposesMenu/>
-            </List>
+            <div className={'box-text-menu'}>Menu</div>
 
-
+            <TextMenu/>
         </Box>
     );
 };
