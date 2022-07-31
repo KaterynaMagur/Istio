@@ -11,3 +11,8 @@ Team
 | George Voit |   YuriyVoitykhivskyi    |  QC / Back-End         |             
 | Volodymyr |   VLK2021    |  Front-End          |               
 | Petro Horoshko |   uziom     |   Scrum Master        | 
+
+Стек технологій:
+
+React
+Material ui
