@@ -10,7 +10,7 @@ const Container = styled('div')`
 export const GoalCards = () => {
   return <Container>
     {Array(3).fill(0).map((_, idx) =>
-      <GoalCard key={idx} />
+      <GoalCard name={"Goal " + (idx + 1)} key={idx} />
     )}
   </Container>
 };

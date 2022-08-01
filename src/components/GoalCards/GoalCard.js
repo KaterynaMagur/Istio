@@ -11,8 +11,8 @@ const Container = styled("div")`
   }
 `;
 
-export const GoalCard = () => {
+export const GoalCard = (props) => {
   return <Container>
-    <h3>Title</h3>
+    <h3>{props.name}</h3>
   </Container>
 }
