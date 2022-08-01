@@ -1,11 +1,14 @@
 import './App.css';
-import {CssBaseline} from "@mui/material";
+import Footer from './components/footer/footer';
+import Header from './components/header/header';
+
 
 
 function App() {
   return (
    <div>
-     <CssBaseline />
+     <Header/>
+     <Footer/>
    </div>
   );
 }
