@@ -1,0 +1,18 @@
+nav ul {
+    list-style: none;
+    font-size: 14px;
+    margin: 0 0 12px;
+    padding: 8px 0;
+    display: flex;
+    gap: 12px;
+    flex-direction: row;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+}
+nav a.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
