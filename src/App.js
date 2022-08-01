@@ -1,9 +1,9 @@
 import {Route, Routes, Navigate} from "react-router-dom";
 
 import './App.css';
-import {MainLayout} from "./layouts/MainLayout/MainLayout.js";
-import {Dashboard} from "./layouts/Dashboard/Dashboard";
-import {Goals} from "./layouts/Goals/Goals";
+import {MainLayout} from "./Layouts/MainLayout/MainLayout";
+import {Dashboard} from "./Layouts/Dashboard/Dashboard";
+import {Goals} from "./Layouts/Goals/Goals";
 
 
 function App() {
