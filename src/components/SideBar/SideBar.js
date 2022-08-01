@@ -2,8 +2,8 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import ListSubheader from "@mui/material/ListSubheader";
 
-import './Side-bar-style.css';
-import TextMenu from "./Text-menu/Text-menu";
+import './SideBarStyle.css';
+import TextMenu from "./TextMenu/TextMenu";
 
 
 const SideBar = () => {
