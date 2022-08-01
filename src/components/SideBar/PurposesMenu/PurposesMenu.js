@@ -6,7 +6,7 @@ import StarPurple500Icon from '@mui/icons-material/StarPurple500';
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
 
-import './Purposes-menu-style.css';
+import './PurposesMenuStyle.css';
 
 
 const PurposesMenu = () => {

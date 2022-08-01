@@ -1,5 +1,6 @@
 import {NavLink} from "react-router-dom";
 import "./MainLayout.css";
+import SideBar from "../../components/SideBar/SideBar";
 
 const routes = [
   {label: "Dashboard", url: "dashboard"},
@@ -18,7 +19,7 @@ export const MainLayout = ({children}) => {
           </ul>
         </nav>
         </header>
-      <aside>Sidebar</aside>
+      <SideBar />
       <main>{children}</main>
     </div>
   );

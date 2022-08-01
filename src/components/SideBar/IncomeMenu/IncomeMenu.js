@@ -9,7 +9,7 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
-import './Income-menu-style.css';
+import './IncomeMenuStyle.css';
 
 
 const IncomeMenu = () => {
