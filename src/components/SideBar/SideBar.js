@@ -1,9 +1,10 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import ListSubheader from "@mui/material/ListSubheader";
+import {Typography} from "@mui/material";
 
 import './SideBarStyle.css';
 import TextMenu from "./TextMenu/TextMenu";
+import {colors as palette} from "../../theme";
 
 
 const SideBar = () => {
@@ -11,10 +12,20 @@ const SideBar = () => {
         <Box sx={{
             width: 250,
             minHeight: '100vh',
-            background: '#E0E0E0',
+            background: theme => palette.primary.light,
         }}>
 
-            <div className={'box-text-menu'}>Menu</div>
+
+            <Typography variant="h4" component="div" gutterBottom
+                        sx={{
+                            fontWeight: 'bold',
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            padding: '1.2rem 0 0.5rem 0',
+                        }}>
+                МЕНЮ
+            </Typography>
 
             <TextMenu/>
         </Box>

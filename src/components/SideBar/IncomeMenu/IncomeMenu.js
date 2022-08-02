@@ -8,6 +8,11 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
+import PercentIcon from '@mui/icons-material/Percent';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import ControlCameraIcon from '@mui/icons-material/ControlCamera';
+import {colors as palette, theme} from "../../../theme";
 
 import './IncomeMenuStyle.css';
 
@@ -22,33 +27,54 @@ const IncomeMenu = () => {
 
     return (
         <List
-            sx={{width: '100%', background: '#E0E0E0'}}
+            sx={{width: '100%', background: theme => palette.primary.light}}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
                 <ListSubheader component="div"
                                id="nested-list-subheader"
                                className={'income-text'}
-                               sx={{color: '#616161', fontWeight: "bold", fontSize: '1.5rem', background: '#E0E0E0'}}
+                               sx={{
+                                   fontWeight: "bold",
+                                   fontSize: '1.5rem',
+                               }}
                 >
                     Дохід
                 </ListSubheader>
             }>
-            <ListItemButton>
+
+            <ListItemButton sx={{
+                '&:hover': {
+                    borderRadius: 4,
+                }
+            }}>
+
                 <ListItemIcon>
-                    <AttachMoneyIcon sx={{color: '#9E9E9E'}}/>
+                    <AttachMoneyIcon
+                        sx={{
+                            color: '#9E9E9E',
+                            '&:hover': {
+                                color: '#673AB7'
+                            },
+                        }}
+                    />
                 </ListItemIcon>
-                <ListItemText primary="Заробітня плата" sx={{
-                    color: '#9E9E9E',
-                    '&:hover': {
-                        color: '#673AB7'
-                    }
-                }}/>
+
+
+                <ListItemText primary="Заробітня плата"
+                              sx={{
+                                  color: '#9E9E9E',
+                                  '&:hover': {
+                                      color: '#673AB7'
+                                  }
+                              }}
+                />
+
             </ListItemButton>
 
             <ListItemButton>
                 <ListItemIcon>
-                    <AttachMoneyIcon sx={{color: '#9E9E9E'}}/>
+                    <PercentIcon sx={{color: '#9E9E9E'}}/>
                 </ListItemIcon>
                 <ListItemText primary="Відсотки з вкладів" sx={{
                     color: '#9E9E9E', '&:hover': {
@@ -59,7 +85,7 @@ const IncomeMenu = () => {
 
             <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
-                    <AttachMoneyIcon sx={{color: '#9E9E9E'}}/>
+                    <AccessibilityNewIcon sx={{color: '#9E9E9E'}}/>
                 </ListItemIcon>
                 <ListItemText primary="Додаткові доходи" sx={{
                     color: '#9E9E9E', '&:hover': {
@@ -70,10 +96,11 @@ const IncomeMenu = () => {
             </ListItemButton>
 
             <Collapse in={open} timeout="auto" unmountOnExit>
+
                 <List component="div" disablePadding>
                     <ListItemButton sx={{pl: 4}}>
                         <ListItemIcon>
-                            <AttachMoneyIcon sx={{color: '#9E9E9E'}}/>
+                            <AccountBalanceWalletIcon sx={{color: '#9E9E9E'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Продаж товарів" sx={{
                             color: '#9E9E9E', margin: 0, padding: 0,
@@ -87,7 +114,7 @@ const IncomeMenu = () => {
                 <List component="div" disablePadding>
                     <ListItemButton sx={{pl: 4}}>
                         <ListItemIcon>
-                            <AttachMoneyIcon sx={{color: '#9E9E9E'}}/>
+                            <ControlCameraIcon sx={{color: '#9E9E9E'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Кошти з неба" sx={{
                             color: '#9E9E9E', '&:hover': {
@@ -103,3 +130,7 @@ const IncomeMenu = () => {
 };
 
 export default IncomeMenu;
+
+
+
+

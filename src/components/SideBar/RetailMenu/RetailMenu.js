@@ -8,8 +8,14 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import List from "@mui/material/List";
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import MarkUnreadChatAltIcon from '@mui/icons-material/MarkUnreadChatAlt';
+import AnnouncementIcon from '@mui/icons-material/Announcement';
+import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
+import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
 
 import './RetailMenuStyle.css';
+import {colors as palette} from "../../../theme";
 
 
 const RetailMenu = () => {
@@ -20,21 +26,24 @@ const RetailMenu = () => {
     };
     return (
         <List
-            sx={{width: '100%', background: '#E0E0E0'}}
+            sx={{width: '100%', background: theme => palette.primary.light}}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
                 <ListSubheader component="div"
                                id="nested-list-subheader"
                                className={'retail-text'}
-                               sx={{color: '#616161', fontWeight: "bold", fontSize: '1.5rem', background: '#E0E0E0'}}
+                               sx={{color: '#616161',
+                                   fontWeight: "bold",
+                                   fontSize: '1.5rem',
+                               }}
                 >
                     Розхід
                 </ListSubheader>
             }>
             <ListItemButton>
                 <ListItemIcon>
-                    <MoneyOffIcon sx={{color: '#9E9E9E'}}/>
+                    <ProductionQuantityLimitsIcon sx={{color: '#9E9E9E'}}/>
                 </ListItemIcon>
                 <ListItemText primary="Продукти" sx={{
                     color: '#9E9E9E',
@@ -46,7 +55,7 @@ const RetailMenu = () => {
 
             <ListItemButton>
                 <ListItemIcon>
-                    <MoneyOffIcon sx={{color: '#9E9E9E'}}/>
+                    <MarkUnreadChatAltIcon sx={{color: '#9E9E9E'}}/>
                 </ListItemIcon>
                 <ListItemText primary="Комунальні платежі" sx={{
                     color: '#9E9E9E', '&:hover': {
@@ -57,7 +66,7 @@ const RetailMenu = () => {
 
             <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
-                    <MoneyOffIcon sx={{color: '#9E9E9E'}}/>
+                    <AnnouncementIcon sx={{color: '#9E9E9E'}}/>
                 </ListItemIcon>
                 <ListItemText primary="Інші витрати" sx={{
                     color: '#9E9E9E', '&:hover': {
@@ -71,7 +80,7 @@ const RetailMenu = () => {
                 <List component="div" disablePadding>
                     <ListItemButton sx={{pl: 4}}>
                         <ListItemIcon>
-                            <MoneyOffIcon sx={{color: '#9E9E9E'}}/>
+                            <OfflineBoltIcon sx={{color: '#9E9E9E'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Одяг" sx={{
                             color: '#9E9E9E', margin: 0, padding: 0,
@@ -85,7 +94,7 @@ const RetailMenu = () => {
                 <List component="div" disablePadding>
                     <ListItemButton sx={{pl: 4}}>
                         <ListItemIcon>
-                            <MoneyOffIcon sx={{color: '#9E9E9E'}}/>
+                            <BrightnessHighIcon sx={{color: '#9E9E9E'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Відпочинок" sx={{
                             color: '#9E9E9E', '&:hover': {
