@@ -8,9 +8,11 @@ import PurposesMenu from "../PurposesMenu/PurposesMenu";
 const TextMenu = () => {
 
     return (
-        <List sx={{
-            width: '100%',
-        }}>
+        <List
+            sx={{
+                width: '100%',
+            }}
+        >
             <IncomeMenu/>
             <RetailMenu/>
             <PurposesMenu/>
