@@ -1,4 +1,4 @@
-import {styled} from "@mui/material";
+import {Card, CardContent, styled} from "@mui/material";
 
 
 const Container = styled("div")`
@@ -12,7 +12,10 @@ const Container = styled("div")`
 `;
 
 export const GoalCard = (props) => {
-  return <Container>
-    <h3>{props.name}</h3>
-  </Container>
+  return <Card>
+    <CardContent>
+
+    </CardContent>
+  </Card>
 }
+
