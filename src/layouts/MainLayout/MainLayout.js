@@ -9,7 +9,7 @@ const routes = [
 
 export const MainLayout = ({children}) => {
   return (
-    <div>
+    <div className={"main-layout"}>
       <header>
         <nav>
           <ul>
@@ -19,8 +19,11 @@ export const MainLayout = ({children}) => {
           </ul>
         </nav>
         </header>
-      <SideBar />
-      <main>{children}</main>
+       <SideBar />
+      <main className={"main-content"}>{children}</main>
+      <footer>
+        Footer
+      </footer>
     </div>
   );
 };
