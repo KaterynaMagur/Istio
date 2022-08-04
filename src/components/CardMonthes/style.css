@@ -1,0 +1,30 @@
+.text{
+   text-transform: uppercase;
+   font-weight: bold;
+}
+
+.general{
+   font-weight: bold;
+}
+
+.income,.cost{
+   font-size: small;
+   font-weight: bold;
+}
+
+.inc-value,.cost-value{
+   font-size: small;
+}
+
+.gen-income,.inc-value{
+   color: rgb(13, 143, 13);
+}
+
+.gen-cost,.cost-value{
+   color:rgb(196, 34, 34)
+}
+
+.gen-cost{
+   display: flex;
+   justify-content: flex-end;
+}
