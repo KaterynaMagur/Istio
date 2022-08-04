@@ -62,7 +62,8 @@ const IncomeMenu = () => {
                     />
                 </ListItemIcon>
 
-                <NavLink to={'/IncomeSalary'}>
+                <NavLink to={'/IncomeSalary'} className={'www'}>
+
                     <ListItemText primary="Заробітня плата"
                                   sx={{
                                       color: theme => palette.GreyColor.main,

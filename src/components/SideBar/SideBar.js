@@ -39,7 +39,7 @@ const SideBar = () => {
                             width: 200,
                             borderRadius: 4,
                             background: theme => palette.primary.main,
-                            margin: '0 0.5rem 0 1.2rem',
+                            margin: '3rem 0.5rem 0 1.2rem',
                             '&:hover': {
                                 color: theme => palette.primary.dark
                             }
