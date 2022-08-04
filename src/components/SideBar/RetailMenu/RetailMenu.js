@@ -13,6 +13,7 @@ import MarkUnreadChatAltIcon from '@mui/icons-material/MarkUnreadChatAlt';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
 import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
 import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
+import {NavLink} from "react-router-dom";
 
 import './RetailMenuStyle.css';
 import {colors as palette} from "../../../theme";
@@ -60,13 +61,15 @@ const RetailMenu = () => {
                     />
                 </ListItemIcon>
 
-                <ListItemText primary="Продукти"
-                              sx={{
-                                  color: theme => palette.GreyColor.main,
-                                  '&:hover': {
-                                      color: theme => palette.primary.dark
-                                  }
-                              }}/>
+                <NavLink to={"/RetailProducts"}>
+                    <ListItemText primary="Продукти"
+                                  sx={{
+                                      color: theme => palette.GreyColor.main,
+                                      '&:hover': {
+                                          color: theme => palette.primary.dark
+                                      }
+                                  }}/>
+                </NavLink>
             </ListItemButton>
 
             <ListItemButton sx={{
@@ -87,13 +90,15 @@ const RetailMenu = () => {
                     />
                 </ListItemIcon>
 
-                <ListItemText primary="Комунальні платежі"
-                              sx={{
-                                  color: theme => palette.GreyColor.main,
-                                  '&:hover': {
-                                      color: theme => palette.primary.dark
-                                  }
-                              }}/>
+                <NavLink to={"/RetailPayments"}>
+                    <ListItemText primary="Комунальні платежі"
+                                  sx={{
+                                      color: theme => palette.GreyColor.main,
+                                      '&:hover': {
+                                          color: theme => palette.primary.dark
+                                      }
+                                  }}/>
+                </NavLink>
             </ListItemButton>
 
             <ListItemButton onClick={handleClick}
@@ -146,15 +151,17 @@ const RetailMenu = () => {
                                 }}/>
                         </ListItemIcon>
 
-                        <ListItemText primary="Одяг"
-                                      sx={{
-                                          color: theme => palette.GreyColor.main,
-                                          margin: 0,
-                                          padding: 0,
-                                          '&:hover': {
-                                              color: theme => palette.primary.dark
-                                          }
-                                      }}/>
+                        <NavLink to={"/RetailClothing"}>
+                            <ListItemText primary="Одяг"
+                                          sx={{
+                                              color: theme => palette.GreyColor.main,
+                                              margin: 0,
+                                              padding: 0,
+                                              '&:hover': {
+                                                  color: theme => palette.primary.dark
+                                              }
+                                          }}/>
+                        </NavLink>
                     </ListItemButton>
                 </List>
 
@@ -177,13 +184,15 @@ const RetailMenu = () => {
                                 }}/>
                         </ListItemIcon>
 
-                        <ListItemText primary="Відпочинок"
-                                      sx={{
-                                          color: theme => palette.GreyColor.main,
-                                          '&:hover': {
-                                              color: theme => palette.primary.dark
-                                          }
-                                      }}/>
+                        <NavLink to={"/RetailVacation"}>
+                            <ListItemText primary="Відпочинок"
+                                          sx={{
+                                              color: theme => palette.GreyColor.main,
+                                              '&:hover': {
+                                                  color: theme => palette.primary.dark
+                                              }
+                                          }}/>
+                        </NavLink>
                     </ListItemButton>
                 </List>
             </Collapse>

@@ -12,10 +12,10 @@ import PercentIcon from '@mui/icons-material/Percent';
 import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import ControlCameraIcon from '@mui/icons-material/ControlCamera';
+import {NavLink} from "react-router-dom";
 
 import './IncomeMenuStyle.css';
 import {colors as palette, theme} from "../../../theme";
-import {NavLink} from "react-router-dom";
 
 
 const IncomeMenu = () => {
@@ -62,14 +62,14 @@ const IncomeMenu = () => {
                     />
                 </ListItemIcon>
 
-                <NavLink to={'/zp'}>
+                <NavLink to={'/IncomeSalary'}>
                     <ListItemText primary="Заробітня плата"
-                                 sx={{
-                                     color: theme => palette.GreyColor.main,
-                                     '&:hover': {
-                                         color: theme => palette.primary.dark
-                                     }
-                                 }}/>
+                                  sx={{
+                                      color: theme => palette.GreyColor.main,
+                                      '&:hover': {
+                                          color: theme => palette.primary.dark
+                                      }
+                                  }}/>
                 </NavLink>
             </ListItemButton>
 
@@ -91,13 +91,16 @@ const IncomeMenu = () => {
                         }}/>
                 </ListItemIcon>
 
-                <ListItemText primary="Відсотки з вкладів"
-                              sx={{
-                                  color: theme => palette.GreyColor.main,
-                                  '&:hover': {
-                                      color: theme => palette.primary.dark
-                                  }
-                              }}/>
+                <NavLink to={"/IncomeDeposits"}>
+                    <ListItemText primary="Відсотки з вкладів"
+                                  sx={{
+                                      color: theme => palette.GreyColor.main,
+                                      '&:hover': {
+                                          color: theme => palette.primary.dark
+                                      }
+                                  }}/>
+                </NavLink>
+
             </ListItemButton>
 
 
@@ -150,15 +153,17 @@ const IncomeMenu = () => {
                                 }}/>
                         </ListItemIcon>
 
-                        <ListItemText primary="Продаж товарів"
-                                      sx={{
-                                          color: theme => palette.GreyColor.main,
-                                          margin: 0,
-                                          padding: 0,
-                                          '&:hover': {
-                                              color: theme => palette.primary.dark
-                                          }
-                                      }}/>
+                        <NavLink to={"/IncomeSelling"}>
+                            <ListItemText primary="Продаж товарів"
+                                          sx={{
+                                              color: theme => palette.GreyColor.main,
+                                              margin: 0,
+                                              padding: 0,
+                                              '&:hover': {
+                                                  color: theme => palette.primary.dark
+                                              }
+                                          }}/>
+                        </NavLink>
 
                     </ListItemButton>
                 </List>
@@ -182,13 +187,15 @@ const IncomeMenu = () => {
                                 }}/>
                         </ListItemIcon>
 
-                        <ListItemText primary="Кошти з неба"
-                                      sx={{
-                                          color: theme => palette.GreyColor.main,
-                                          '&:hover': {
-                                              color: theme => palette.primary.dark
-                                          }
-                                      }}/>
+                        <NavLink to={"/IncomeFreeMoney"}>
+                            <ListItemText primary="Кошти з неба"
+                                          sx={{
+                                              color: theme => palette.GreyColor.main,
+                                              '&:hover': {
+                                                  color: theme => palette.primary.dark
+                                              }
+                                          }}/>
+                        </NavLink>
                     </ListItemButton>
                 </List>
             </Collapse>
