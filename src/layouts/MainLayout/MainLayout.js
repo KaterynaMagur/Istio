@@ -1,6 +1,8 @@
 import {NavLink} from "react-router-dom";
 import "./MainLayout.css";
 import SideBar from "../../components/SideBar/SideBar";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 const routes = [
   {label: "Dashboard", url: "dashboard"},
@@ -11,6 +13,7 @@ export const MainLayout = ({children}) => {
   return (
     <div className={"main-layout"}>
       <header>
+        <Header/>
         <nav>
           <ul>
             {routes.map(route =>
@@ -19,10 +22,10 @@ export const MainLayout = ({children}) => {
           </ul>
         </nav>
         </header>
-       <SideBar />
+      <SideBar />
       <main className={"main-content"}>{children}</main>
       <footer>
-        Footer
+        <Footer/>
       </footer>
     </div>
   );
