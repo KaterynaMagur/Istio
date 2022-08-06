@@ -5,47 +5,85 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import StarPurple500Icon from '@mui/icons-material/StarPurple500';
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
+import Brightness3Icon from '@mui/icons-material/Brightness3';
+import {NavLink} from "react-router-dom";
 
 import './PurposesMenuStyle.css';
+import {colors as palette} from "../../../theme";
 
 
 const PurposesMenu = () => {
 
     return (
         <List
-            sx={{width: '100%', background: '#E0E0E0'}}
+            sx={{width: '100%'}}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
                 <ListSubheader component="div"
                                id="nested-list-subheader"
                                className={'purposes-text'}
-                               sx={{color: '#616161', fontWeight: "bold", fontSize: '1.5rem', background: '#E0E0E0'}}
+                               sx={{
+                                   fontWeight: "bold",
+                                   fontSize: '1.5rem',
+                               }}
                 >
                     Мої цілі
                 </ListSubheader>
             }>
-            <ListItemButton>
-                <ListItemIcon>
-                    <StarPurple500Icon sx={{color: '#9E9E9E'}}/>
-                </ListItemIcon>
-                <ListItemText primary="Політ на Марс" sx={{
-                    color: '#9E9E9E',
+            <ListItemButton
+                sx={{
                     '&:hover': {
-                        color: '#673AB7'
+                        borderRadius: 4,
+                        color: theme => palette.primary.main
                     }
-                }}/>
+                }}>
+                <ListItemIcon>
+                    <StarPurple500Icon
+                        sx={{
+                            color: theme => palette.GreyColor.main,
+                            '&:hover': {
+                                color: theme => palette.primary.dark
+                            }
+                        }}/>
+                </ListItemIcon>
+
+                <NavLink to={"/PurposesTarget1"}>
+                    <ListItemText primary="Політ на Марс"
+                                  sx={{
+                                      color: theme => palette.GreyColor.main,
+                                      '&:hover': {
+                                          color: theme => palette.primary.dark
+                                      }
+                                  }}/>
+                </NavLink>
             </ListItemButton>
 
-            <ListItemButton>
-                <ListItemIcon>
-                    <StarPurple500Icon sx={{color: '#9E9E9E'}}/>
-                </ListItemIcon>
-                <ListItemText primary="Політ на Місяць" sx={{
-                    color: '#9E9E9E', '&:hover': {
-                        color: '#673AB7'
+            <ListItemButton
+                sx={{
+                    '&:hover': {
+                        borderRadius: 4,
+                        color: theme => palette.primary.main
                     }
-                }}/>
+                }}>
+                <ListItemIcon>
+                    <Brightness3Icon
+                        sx={{
+                            color: theme => palette.GreyColor.main,
+                            '&:hover': {
+                                color: theme => palette.primary.dark
+                            }
+                        }}/>
+                </ListItemIcon>
+                <NavLink to={"/PurposesTarget2"}>
+                    <ListItemText primary="Політ на Місяць"
+                                  sx={{
+                                      color: theme => palette.GreyColor.main,
+                                      '&:hover': {
+                                          color: theme => palette.primary.dark
+                                      }
+                                  }}/>
+                </NavLink>
             </ListItemButton>
         </List>
     );

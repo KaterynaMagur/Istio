@@ -8,8 +8,14 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
+import PercentIcon from '@mui/icons-material/Percent';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import ControlCameraIcon from '@mui/icons-material/ControlCamera';
+import {NavLink} from "react-router-dom";
 
 import './IncomeMenuStyle.css';
+import {colors as palette, theme} from "../../../theme";
 
 
 const IncomeMenu = () => {
@@ -22,84 +28,186 @@ const IncomeMenu = () => {
 
     return (
         <List
-            sx={{width: '100%', background: '#E0E0E0'}}
+            sx={{width: '100%'}}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
                 <ListSubheader component="div"
                                id="nested-list-subheader"
                                className={'income-text'}
-                               sx={{color: '#616161', fontWeight: "bold", fontSize: '1.5rem', background: '#E0E0E0'}}
+                               sx={{
+                                   fontWeight: "bold",
+                                   fontSize: '1.5rem',
+                               }}
                 >
                     Дохід
                 </ListSubheader>
             }>
-            <ListItemButton>
+
+            <ListItemButton sx={{
+                '&:hover': {
+                    borderRadius: 4,
+                    color: theme => palette.primary.main
+                }
+            }}>
+
                 <ListItemIcon>
-                    <AttachMoneyIcon sx={{color: '#9E9E9E'}}/>
+                    <AttachMoneyIcon
+                        sx={{
+                            color: theme => palette.GreyColor.main,
+                            '&:hover': {
+                                color: theme => palette.primary.dark
+                            }
+                        }}
+                    />
                 </ListItemIcon>
-                <ListItemText primary="Заробітня плата" sx={{
-                    color: '#9E9E9E',
+
+                <NavLink to={'/IncomeSalary'} className={'www'}>
+
+                    <ListItemText primary="Заробітня плата"
+                                  sx={{
+                                      color: theme => palette.GreyColor.main,
+                                      '&:hover': {
+                                          color: theme => palette.primary.dark
+                                      }
+                                  }}/>
+                </NavLink>
+            </ListItemButton>
+
+            <ListItemButton
+                sx={{
                     '&:hover': {
-                        color: '#673AB7'
+                        borderRadius: 4,
+                        color: theme => palette.primary.main
                     }
-                }}/>
+                }}>
+
+                <ListItemIcon>
+                    <PercentIcon
+                        sx={{
+                            color: theme => palette.GreyColor.main,
+                            '&:hover': {
+                                color: theme => palette.primary.dark
+                            }
+                        }}/>
+                </ListItemIcon>
+
+                <NavLink to={"/IncomeDeposits"}>
+                    <ListItemText primary="Відсотки з вкладів"
+                                  sx={{
+                                      color: theme => palette.GreyColor.main,
+                                      '&:hover': {
+                                          color: theme => palette.primary.dark
+                                      }
+                                  }}/>
+                </NavLink>
+
             </ListItemButton>
 
-            <ListItemButton>
-                <ListItemIcon>
-                    <AttachMoneyIcon sx={{color: '#9E9E9E'}}/>
-                </ListItemIcon>
-                <ListItemText primary="Відсотки з вкладів" sx={{
-                    color: '#9E9E9E', '&:hover': {
-                        color: '#673AB7'
-                    }
-                }}/>
-            </ListItemButton>
 
-            <ListItemButton onClick={handleClick}>
+            <ListItemButton onClick={handleClick}
+                            sx={{
+                                '&:hover': {
+                                    borderRadius: 4,
+                                    color: theme => palette.primary.main
+                                }
+                            }}>
+
                 <ListItemIcon>
-                    <AttachMoneyIcon sx={{color: '#9E9E9E'}}/>
+                    <AccessibilityNewIcon
+                        sx={{
+                            color: theme => palette.GreyColor.main,
+                            '&:hover': {
+                                color: theme => palette.primary.dark
+                            }
+                        }}/>
                 </ListItemIcon>
+
                 <ListItemText primary="Додаткові доходи" sx={{
-                    color: '#9E9E9E', '&:hover': {
-                        color: '#673AB7'
+                    color: theme => palette.GreyColor.main,
+                    '&:hover': {
+                        color: theme => palette.primary.dark
                     }
                 }}/>
-                {open ? <ExpandLess sx={{color: '#673AB7'}}/> : <ExpandMore sx={{color: '#9E9E9E'}}/>}
+                {open ? <ExpandLess sx={{color: theme => palette.primary.dark}}/> :
+                    <ExpandMore sx={{color: theme => palette.GreyColor.main}}/>}
             </ListItemButton>
 
             <Collapse in={open} timeout="auto" unmountOnExit>
+
                 <List component="div" disablePadding>
-                    <ListItemButton sx={{pl: 4}}>
+                    <ListItemButton sx={{
+                        pl: 4,
+                        '&:hover': {
+                            borderRadius: 4,
+                            background: theme => palette.primary.light
+                        }
+                    }}>
+
                         <ListItemIcon>
-                            <AttachMoneyIcon sx={{color: '#9E9E9E'}}/>
+                            <AccountBalanceWalletIcon
+                                sx={{
+                                    color: theme => palette.GreyColor.main,
+                                    '&:hover': {
+                                        color: theme => palette.primary.dark
+                                    }
+                                }}/>
                         </ListItemIcon>
-                        <ListItemText primary="Продаж товарів" sx={{
-                            color: '#9E9E9E', margin: 0, padding: 0,
-                            '&:hover': {
-                                color: '#673AB7'
-                            }
-                        }}/>
+
+                        <NavLink to={"/IncomeSelling"}>
+                            <ListItemText primary="Продаж товарів"
+                                          sx={{
+                                              color: theme => palette.GreyColor.main,
+                                              margin: 0,
+                                              padding: 0,
+                                              '&:hover': {
+                                                  color: theme => palette.primary.dark
+                                              }
+                                          }}/>
+                        </NavLink>
+
                     </ListItemButton>
                 </List>
 
                 <List component="div" disablePadding>
-                    <ListItemButton sx={{pl: 4}}>
-                        <ListItemIcon>
-                            <AttachMoneyIcon sx={{color: '#9E9E9E'}}/>
-                        </ListItemIcon>
-                        <ListItemText primary="Кошти з неба" sx={{
-                            color: '#9E9E9E', '&:hover': {
-                                color: '#673AB7'
+                    <ListItemButton
+                        sx={{
+                            pl: 4,
+                            '&:hover': {
+                                borderRadius: 4,
+                                background: theme => palette.primary.light
                             }
-                        }}/>
+                        }}>
+                        <ListItemIcon>
+                            <ControlCameraIcon
+                                sx={{
+                                    color: theme => palette.GreyColor.main,
+                                    '&:hover': {
+                                        color: theme => palette.primary.dark
+                                    }
+                                }}/>
+                        </ListItemIcon>
+
+                        <NavLink to={"/IncomeFreeMoney"}>
+                            <ListItemText primary="Кошти з неба"
+                                          sx={{
+                                              color: theme => palette.GreyColor.main,
+                                              '&:hover': {
+                                                  color: theme => palette.primary.dark
+                                              }
+                                          }}/>
+                        </NavLink>
                     </ListItemButton>
                 </List>
             </Collapse>
+
 
         </List>
     );
 };
 
 export default IncomeMenu;
+
+
+
+

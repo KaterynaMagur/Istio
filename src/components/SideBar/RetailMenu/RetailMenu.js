@@ -8,8 +8,15 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import List from "@mui/material/List";
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import MarkUnreadChatAltIcon from '@mui/icons-material/MarkUnreadChatAlt';
+import AnnouncementIcon from '@mui/icons-material/Announcement';
+import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
+import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
+import {NavLink} from "react-router-dom";
 
 import './RetailMenuStyle.css';
+import {colors as palette} from "../../../theme";
 
 
 const RetailMenu = () => {
@@ -20,78 +27,172 @@ const RetailMenu = () => {
     };
     return (
         <List
-            sx={{width: '100%', background: '#E0E0E0'}}
+            sx={{width: '100%'}}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
                 <ListSubheader component="div"
                                id="nested-list-subheader"
                                className={'retail-text'}
-                               sx={{color: '#616161', fontWeight: "bold", fontSize: '1.5rem', background: '#E0E0E0'}}
+                               sx={{
+                                   fontWeight: "bold",
+                                   fontSize: '1.5rem',
+                               }}
                 >
                     Розхід
                 </ListSubheader>
             }>
-            <ListItemButton>
+
+            <ListItemButton sx={{
+                '&:hover': {
+                    borderRadius: 4,
+                    color: theme => palette.primary.main
+                }
+            }}>
+
                 <ListItemIcon>
-                    <MoneyOffIcon sx={{color: '#9E9E9E'}}/>
+                    <ProductionQuantityLimitsIcon
+                        sx={{
+                            color: theme => palette.GreyColor.main,
+                            '&:hover': {
+                                color: theme => palette.primary.dark
+                            }
+                        }}
+                    />
                 </ListItemIcon>
-                <ListItemText primary="Продукти" sx={{
-                    color: '#9E9E9E',
-                    '&:hover': {
-                        color: '#673AB7'
-                    }
-                }}/>
+
+                <NavLink to={"/RetailProducts"}>
+                    <ListItemText primary="Продукти"
+                                  sx={{
+                                      color: theme => palette.GreyColor.main,
+                                      '&:hover': {
+                                          color: theme => palette.primary.dark
+                                      }
+                                  }}/>
+                </NavLink>
             </ListItemButton>
 
-            <ListItemButton>
+            <ListItemButton sx={{
+                '&:hover': {
+                    borderRadius: 4,
+                    color: theme => palette.primary.main
+                }
+            }}>
+
                 <ListItemIcon>
-                    <MoneyOffIcon sx={{color: '#9E9E9E'}}/>
+                    <MarkUnreadChatAltIcon
+                        sx={{
+                            color: theme => palette.GreyColor.main,
+                            '&:hover': {
+                                color: theme => palette.primary.dark
+                            }
+                        }}
+                    />
                 </ListItemIcon>
-                <ListItemText primary="Комунальні платежі" sx={{
-                    color: '#9E9E9E', '&:hover': {
-                        color: '#673AB7'
-                    }
-                }}/>
+
+                <NavLink to={"/RetailPayments"}>
+                    <ListItemText primary="Комунальні платежі"
+                                  sx={{
+                                      color: theme => palette.GreyColor.main,
+                                      '&:hover': {
+                                          color: theme => palette.primary.dark
+                                      }
+                                  }}/>
+                </NavLink>
             </ListItemButton>
 
-            <ListItemButton onClick={handleClick}>
+            <ListItemButton onClick={handleClick}
+                            sx={{
+                                '&:hover': {
+                                    borderRadius: 4,
+                                    color: theme => palette.primary.main
+                                }
+                            }}>
+
                 <ListItemIcon>
-                    <MoneyOffIcon sx={{color: '#9E9E9E'}}/>
+                    <AnnouncementIcon
+                        sx={{
+                            color: theme => palette.GreyColor.main,
+                            '&:hover': {
+                                color: theme => palette.primary.dark
+                            }
+                        }}
+                    />
                 </ListItemIcon>
                 <ListItemText primary="Інші витрати" sx={{
-                    color: '#9E9E9E', '&:hover': {
-                        color: '#673AB7'
+                    color: theme => palette.GreyColor.main,
+                    '&:hover': {
+                        color: theme => palette.primary.dark
                     }
                 }}/>
-                {open ? <ExpandLess sx={{color: '#673AB7'}}/> : <ExpandMore sx={{color: '#9E9E9E'}}/>}
+                {open ? <ExpandLess sx={{color: theme => palette.primary.dark}}/> :
+                    <ExpandMore sx={{color: theme => palette.GreyColor.main}}/>}
             </ListItemButton>
 
             <Collapse in={open} timeout="auto" unmountOnExit>
+
                 <List component="div" disablePadding>
-                    <ListItemButton sx={{pl: 4}}>
-                        <ListItemIcon>
-                            <MoneyOffIcon sx={{color: '#9E9E9E'}}/>
-                        </ListItemIcon>
-                        <ListItemText primary="Одяг" sx={{
-                            color: '#9E9E9E', margin: 0, padding: 0,
+                    <ListItemButton
+                        sx={{
+                            pl: 4,
                             '&:hover': {
-                                color: '#673AB7'
+                                borderRadius: 4,
+                                background: theme => palette.primary.light
                             }
-                        }}/>
+                        }}>
+
+                        <ListItemIcon>
+                            <OfflineBoltIcon
+                                sx={{
+                                    color: theme => palette.GreyColor.main,
+                                    '&:hover': {
+                                        color: theme => palette.primary.dark
+                                    }
+                                }}/>
+                        </ListItemIcon>
+
+                        <NavLink to={"/RetailClothing"}>
+                            <ListItemText primary="Одяг"
+                                          sx={{
+                                              color: theme => palette.GreyColor.main,
+                                              margin: 0,
+                                              padding: 0,
+                                              '&:hover': {
+                                                  color: theme => palette.primary.dark
+                                              }
+                                          }}/>
+                        </NavLink>
                     </ListItemButton>
                 </List>
 
                 <List component="div" disablePadding>
-                    <ListItemButton sx={{pl: 4}}>
-                        <ListItemIcon>
-                            <MoneyOffIcon sx={{color: '#9E9E9E'}}/>
-                        </ListItemIcon>
-                        <ListItemText primary="Відпочинок" sx={{
-                            color: '#9E9E9E', '&:hover': {
-                                color: '#673AB7'
+                    <ListItemButton
+                        sx={{
+                            pl: 4,
+                            '&:hover': {
+                                borderRadius: 4,
+                                background: theme => palette.primary.light
                             }
-                        }}/>
+                        }}>
+                        <ListItemIcon>
+                            <BrightnessHighIcon
+                                sx={{
+                                    color: theme => palette.GreyColor.main,
+                                    '&:hover': {
+                                        color: theme => palette.primary.dark
+                                    }
+                                }}/>
+                        </ListItemIcon>
+
+                        <NavLink to={"/RetailVacation"}>
+                            <ListItemText primary="Відпочинок"
+                                          sx={{
+                                              color: theme => palette.GreyColor.main,
+                                              '&:hover': {
+                                                  color: theme => palette.primary.dark
+                                              }
+                                          }}/>
+                        </NavLink>
                     </ListItemButton>
                 </List>
             </Collapse>

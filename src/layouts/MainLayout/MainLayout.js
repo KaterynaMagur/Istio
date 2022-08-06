@@ -4,7 +4,7 @@ import SideBar from "../../components/SideBar/SideBar";
 
 const routes = [
   {label: "Dashboard", url: "dashboard"},
-  {label: "Goals", url: "goals"}
+  {label: "Goals", url: "goals"},
 ]
 
 export const MainLayout = ({children}) => {
