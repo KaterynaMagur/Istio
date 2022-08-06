@@ -3,7 +3,6 @@ import CardMonthes from "../../components/CardMonthes/CardMonthes";
 export const Dashboard = () => {
   return (
     <div>
-      <h1>Dashboard</h1>
       <CardMonthes />
     </div>
   );

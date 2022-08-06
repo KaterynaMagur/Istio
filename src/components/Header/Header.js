@@ -12,6 +12,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import {NavLink} from "react-router-dom";
+
+const routes = [
+  {label: "Головна", url: "dashboard"},
+  {label: "Цілі", url: "goals"},
+]
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -80,6 +86,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
           >
             IstIo
           </Typography>
+          <nav>
+            <ul>
+              {routes.map(route =>
+                <li key={route.url}><NavLink to={route.url}>{route.label}</NavLink></li>
+              )}
+            </ul>
+          </nav>
           <Search aria-label="Search">
             <SearchIconWrapper>
               <SearchIcon />
@@ -113,7 +126,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
               <AccountCircle/>
             </IconButton>
           </Box>
-          
         </Toolbar>
       </AppBar>
     </Box>
