@@ -18,6 +18,7 @@ const SideBar = () => {
             width: 250,
             minHeight: '100vh',
             background: "white",
+            marginBottom: 2,
         }}>
 
             <Typography variant="h4" component="div" gutterBottom

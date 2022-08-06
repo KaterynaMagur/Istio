@@ -1,12 +1,13 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import BottomNavigation from "@mui/material/BottomNavigation";
-import { Typography } from "@mui/material";
+import {Box, Typography} from "@mui/material";
+
 
 const Footer = () => {
 
     return (
-      <AppBar 
+      <AppBar
       elevation={4}
       sx={{ position: 'static', bottom: 0, left: 0, right: 0, }}>
       <Toolbar>

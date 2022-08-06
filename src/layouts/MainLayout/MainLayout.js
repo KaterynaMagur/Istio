@@ -21,9 +21,11 @@ export const MainLayout = ({children}) => {
             )}
           </ul>
         </nav> */}
-        </header>
+      </header>
       <SideBar />
-      <main className={"main-content"}>{children}</main>
+      <main className={"main-content"}>
+        {children}
+      </main>
       <footer>
         <Footer/>
       </footer>

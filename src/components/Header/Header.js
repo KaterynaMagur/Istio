@@ -60,6 +60,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
+const Nav = styled('nav')`
+  margin: 0 20px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  ul {
+    margin: 0;
+  }
+  a {
+    user-select: none;
+    font-size: .7rem;
+    color: #FFFFFF;
+  }
+`;
+
 
  const Header = () => {
 
@@ -86,13 +103,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
           >
             IstIo
           </Typography>
-          <nav>
+          <Nav>
             <ul>
               {routes.map(route =>
                 <li key={route.url}><NavLink to={route.url}>{route.label}</NavLink></li>
               )}
             </ul>
-          </nav>
+          </Nav>
           <Search aria-label="Search">
             <SearchIconWrapper>
               <SearchIcon />
