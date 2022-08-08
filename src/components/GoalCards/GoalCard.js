@@ -21,7 +21,7 @@ const Container = styled("div")`
   background: #FFF;
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-  padding: 10px;
+  padding: 11px;
   h3 {
     margin: 0;
   }
