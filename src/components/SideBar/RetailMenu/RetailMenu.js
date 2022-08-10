@@ -46,7 +46,8 @@ const RetailMenu = () => {
             <ListItemButton sx={{
                 '&:hover': {
                     borderRadius: 4,
-                    color: theme => palette.primary.main
+                    color: theme => palette.primary.main,
+                    background: theme => palette.primary.light,
                 }
             }}>
 
@@ -75,7 +76,8 @@ const RetailMenu = () => {
             <ListItemButton sx={{
                 '&:hover': {
                     borderRadius: 4,
-                    color: theme => palette.primary.main
+                    color: theme => palette.primary.main,
+                    background: theme => palette.primary.light,
                 }
             }}>
 
@@ -105,7 +107,8 @@ const RetailMenu = () => {
                             sx={{
                                 '&:hover': {
                                     borderRadius: 4,
-                                    color: theme => palette.primary.main
+                                    color: theme => palette.primary.main,
+                                    background: theme => palette.primary.light,
                                 }
                             }}>
 
@@ -137,7 +140,7 @@ const RetailMenu = () => {
                             pl: 4,
                             '&:hover': {
                                 borderRadius: 4,
-                                background: theme => palette.primary.light
+                                background: theme => palette.primary.light,
                             }
                         }}>
 

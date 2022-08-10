@@ -4,3 +4,10 @@
     align-items: center;
     margin: 0 0 1rem 0.5rem;
 }
+
+#nested-list-subheader a.active {
+    text-decoration: none;
+    color: rebeccapurple;
+    text-shadow: 1px 1px mediumpurple;
+}
+

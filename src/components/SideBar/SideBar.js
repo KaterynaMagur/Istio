@@ -23,7 +23,10 @@ const SideBar = () => {
 
             <Typography variant="h4" component="div" gutterBottom
                         sx={{
+                            color: theme => palette.primary.main,
+                            textShadow: '2px 2px blueviolet',
                             fontWeight: 'bold',
+                            fontSize: '2.5rem',
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
