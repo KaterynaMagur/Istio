@@ -1,15 +1,7 @@
-.text{
-   text-transform: uppercase;
-   font-weight: bold;
-}
-
-.general{
-   font-weight: bold;
-}
 
 .income,.cost{
    font-size: small;
-   font-weight: bold;
+   
 }
 
 .inc-value,.cost-value{

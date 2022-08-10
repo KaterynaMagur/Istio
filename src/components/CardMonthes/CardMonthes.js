@@ -1,19 +1,18 @@
-import CardMonth from './CardMonth.js';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
+import {styled} from "@mui/material";
+import CardMonth from "./CardMonth.js";
 
-function CardMonthes() {
-  return (
-    <div>
-      <Container>
-        <Grid container spacing={4}>
-          <CardMonth/>
-          <CardMonth/>
-          <CardMonth/>
-        </Grid>
-      </Container>
-    </div>
-  );
-}
+const Container = styled('div')`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+`;
+
+ const CardMonthes = () => {
+  return <Container>
+    {Array(3).fill(0).map((_, idx) =>
+      <CardMonth name={"Month " + (idx + 1)} key={idx} />
+    )}
+  </Container>
+};
 
 export default CardMonthes;

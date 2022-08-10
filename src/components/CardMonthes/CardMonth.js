@@ -1,8 +1,11 @@
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+import {
+   Typography,
+   Button,
+   CardHeader,
+   Paper,
+   Grid,
+   Box
+  } from "@mui/material";
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 
 import "./style.css";
@@ -12,26 +15,32 @@ const CardMonth = () => {
    return (
       <Grid
          item xs={4}>
-
-         <Paper sx={{ borderRadius: "20px", backgroundColor: "#aedbf0" }} elevation={20}>
-            <Box paddingX={2}>
+         <Paper sx={{
+            background: "#FFF",
+            borderRadius: "4px",
+            padding: "5px"
+            }} 
+         >
+            <Box paddingX={0}>
                <Box
                   sx={{
                      display: "flex",
                      justifyContent: "space-between"
                   }}
                >
-                  <Typography sx={{ paddingTop: "5px" }} variant='h4' component="h4">Січень</Typography>
-                  <Typography sx={{ display: "flex", paddingTop: "10px" }}><div className='text'>Бюджет:</div><span>100000</span></Typography>
+                  <CardHeader
+                     title="Січень"
+                  />
+                  <Typography sx={{ display: "flex", paddingTop: "10px" }}>Бюджет:100000</Typography>
                </Box>
                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                   <Typography sx={{
                      display: "flex",
                      paddingTop: "5px"
                   }}>
-                     <div className="text">Обов'язкові витрати:</div><span>20000</span>
+                     Обов'язкові витрати:20000
                   </Typography>
-                  <Button sx={{ borderRadius: '50px', border: '0px', minWidth: '0px', padding: '0px' }} variant="outlined"><ControlPointIcon /></Button>
+                  <Button sx={{ borderRadius: '50px', border: '0px', minWidth: '0px', padding: '0px' }} variant="text"><ControlPointIcon /></Button>
                </Box>
                <Box
                   sx={{
@@ -44,10 +53,11 @@ const CardMonth = () => {
                         padding: "0px",
                         display: "flex",
                         flex: "auto",
-                        flexDirection: "column"
+                        flexDirection: "column",
+                        margin:"20px"
                      }}
                   >
-                     <h3>Дохід</h3>
+                     Дохід
                      <Box sx={{ display: 'flex' }}>
                         <div className='income'>Джерело:</div>
                         <span className='inc-value'>+1000</span>
@@ -65,10 +75,11 @@ const CardMonth = () => {
                      sx={{
                         padding: "0px",
                         display: "flex",
-                        flexDirection: "column"
+                        flexDirection: "column",
+                        margin:"20px"
                      }}
                   >
-                     <h3>Витрати</h3>
+                     Витрати
                      <Box sx={{ display: 'flex', justifyContent: "flex-end" }}>
                         <div className='cost'>Категорія:</div>
                         <span className='cost-value'>-500</span>
@@ -86,21 +97,23 @@ const CardMonth = () => {
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between", padding: "10px" }}>
                <Typography>
-                  <div className='general'>Загальний дохід:</div>
-                  <span className='gen-income'>3000</span>
+                  Загальний дохід:
+                  3000
                </Typography>
                <Typography>
-                  <div className='general'>Загальні витрати:</div>
-                  <span className='gen-cost'>1500</span>
+                  Загальні витрати:
+                  1500
                </Typography>
 
             </Box>
             <Box>
                <Typography sx={{
                   display: "flex",
-                  justifyContent: "center"
-               }}>
-                  <div className="text">Залишок:</div><span>98630</span>
+                  justifyContent: "center",
+                  textTransform:"uppercase"
+               }}
+               >
+                  Залишок:98630
                </Typography>
             </Box>
             <Box
@@ -109,7 +122,7 @@ const CardMonth = () => {
                   justifyContent: "space-between"
                }}
             >
-               <Button sx={{ borderRadius: '0px 0px 20px 20px', width: "100%" }} variant="contained">Перенести залишок на ціль</Button>
+               <Button size="medium" color="primary">Перенести залишок на ціль</Button>
             </Box>
          </Paper>
       </Grid>
