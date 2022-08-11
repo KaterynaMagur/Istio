@@ -47,7 +47,8 @@ const IncomeMenu = () => {
             <ListItemButton sx={{
                 '&:hover': {
                     borderRadius: 4,
-                    color: theme => palette.primary.main
+                    color: theme => palette.primary.main,
+                    background: theme => palette.primary.light,
                 }
             }}>
 
@@ -78,7 +79,8 @@ const IncomeMenu = () => {
                 sx={{
                     '&:hover': {
                         borderRadius: 4,
-                        color: theme => palette.primary.main
+                        color: theme => palette.primary.main,
+                        background: theme => palette.primary.light,
                     }
                 }}>
 
@@ -109,7 +111,8 @@ const IncomeMenu = () => {
                             sx={{
                                 '&:hover': {
                                     borderRadius: 4,
-                                    color: theme => palette.primary.main
+                                    color: theme => palette.primary.main,
+                                    background: theme => palette.primary.light,
                                 }
                             }}>
 

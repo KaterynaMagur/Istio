@@ -28,27 +28,33 @@ const PurposesMenu = () => {
                                    fontSize: '1.5rem',
                                }}
                 >
-                    Мої цілі
+                    <NavLink to={'/goals'}>
+                        Мої цілі
+                    </NavLink>
                 </ListSubheader>
             }>
-            <ListItemButton
-                sx={{
-                    '&:hover': {
-                        borderRadius: 4,
-                        color: theme => palette.primary.main
-                    }
-                }}>
-                <ListItemIcon>
-                    <StarPurple500Icon
-                        sx={{
-                            color: theme => palette.GreyColor.main,
-                            '&:hover': {
-                                color: theme => palette.primary.dark
-                            }
-                        }}/>
-                </ListItemIcon>
 
-                <NavLink to={"/PurposesTarget1"}>
+
+            <NavLink to={"/PurposesTarget1"}>
+                <ListItemButton
+                    sx={{
+                        '&:hover': {
+                            borderRadius: 4,
+                            color: theme => palette.primary.main,
+                            background: theme => palette.primary.light,
+                        }
+                    }}>
+                    <ListItemIcon>
+                        <StarPurple500Icon
+                            sx={{
+                                color: theme => palette.GreyColor.main,
+                                '&:hover': {
+                                    color: theme => palette.primary.dark
+                                }
+                            }}/>
+                    </ListItemIcon>
+
+
                     <ListItemText primary="Політ на Марс"
                                   sx={{
                                       color: theme => palette.GreyColor.main,
@@ -56,14 +62,16 @@ const PurposesMenu = () => {
                                           color: theme => palette.primary.dark
                                       }
                                   }}/>
-                </NavLink>
-            </ListItemButton>
+
+                </ListItemButton>
+            </NavLink>
 
             <ListItemButton
                 sx={{
                     '&:hover': {
                         borderRadius: 4,
-                        color: theme => palette.primary.main
+                        color: theme => palette.primary.main,
+                        background: theme => palette.primary.light,
                     }
                 }}>
                 <ListItemIcon>
