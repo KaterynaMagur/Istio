@@ -27,6 +27,11 @@ main.main-content {
     margin-right: 12px;
 }
 
+main.main-content.without-sidebar {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
 nav ul {
     list-style: none;
     font-size: 14px;
