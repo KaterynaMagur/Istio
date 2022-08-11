@@ -1,10 +1,10 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -12,12 +12,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import Tooltip  from '@mui/material/Tooltip';
 import {NavLink} from "react-router-dom";
 
+
 const routes = [
-  {label: "Головна", url: "dashboard"},
-  {label: "Цілі", url: "goals"},
-]
+  {label: "IstIo", url: "dashboard"},
+];
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -62,17 +63,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Nav = styled('nav')`
   margin: 0 20px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  text-transform: uppercase;
-  font-weight: 700;
   ul {
     margin: 0;
   }
   a {
+    text-decoration: none;
     user-select: none;
-    font-size: .7rem;
+    font-size: .9  rem;
     color: #FFFFFF;
   }
 `;
@@ -84,7 +81,7 @@ const Nav = styled('nav')`
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar>
-          <IconButton 
+          <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -92,24 +89,18 @@ const Nav = styled('nav')`
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ 
-            fontWeight: 700,
-            letterSpacing:'.2rem', 
-            }}
-          >
-            IstIo
-          </Typography>
-          <Nav>
-            <ul>
+          <Nav
+              sx={{ 
+              fontWeight: 700,
+              letterSpacing:'.2rem', 
+              }}
+              >
+                <ul>
               {routes.map(route =>
                 <li key={route.url}><NavLink to={route.url}>{route.label}</NavLink></li>
               )}
             </ul>
-          </Nav>
+          </Nav> 
           <Search aria-label="Search">
             <SearchIconWrapper>
               <SearchIcon />
@@ -117,16 +108,19 @@ const Nav = styled('nav')`
             <StyledInputBase
               placeholder="Search…"
             />
-          </Search>
+          </Search> 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 
-
+            <Tooltip title="Open Mail">
             <IconButton size="large" color="inherit">
               <Badge badgeContent={0} color="error">
                 <MailIcon/>
               </Badge>
             </IconButton>
+            </Tooltip>
+
+            <Tooltip title="Open Notifications">
             <IconButton
               size="large"
               color="inherit"
@@ -135,13 +129,18 @@ const Nav = styled('nav')`
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              color="inherit"
-            >
+            </Tooltip>
+
+
+        
+            <Tooltip title="Open settings">
+              <IconButton color="inherit"  >
               <AccountCircle/>
-            </IconButton>
+              </IconButton>
+            </Tooltip>
+            
+
+
           </Box>
         </Toolbar>
       </AppBar>
