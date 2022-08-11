@@ -3,6 +3,7 @@ import "./MainLayout.css";
 import SideBar from "../../components/SideBar/SideBar";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import { useState } from 'react';
 
 {/* const routes = [
   {label: "Dashboard", url: "dashboard"},
@@ -10,10 +11,16 @@ import Footer from "../../components/Footer/Footer";
 ] */}
 
 export const MainLayout = ({children}) => {
+  const [isSideBar, setSidebar] = useState(true);
+
+  const handleToggleSideBar = () => {
+    setSidebar(!isSideBar);
+  };
+
   return (
     <div className={"main-layout"}>
       <header>
-        <Header/>
+        <Header toggleSideBar={handleToggleSideBar}/>
         {/* <nav>
           <ul>
             {routes.map(route =>
@@ -22,8 +29,8 @@ export const MainLayout = ({children}) => {
           </ul>
         </nav> */}
       </header>
-      <SideBar />
-      <main className={"main-content"}>
+      {isSideBar ? <SideBar/> : null}
+      <main className={`main-content ${isSideBar ? "" :"without-sidebar"}`}>
         {children}
       </main>
       <footer>
