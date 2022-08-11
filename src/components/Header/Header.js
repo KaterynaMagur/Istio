@@ -78,7 +78,7 @@ const Nav = styled('nav')`
 `;
 
 
- const Header = () => {
+ const Header = (props) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -89,6 +89,7 @@ const Nav = styled('nav')`
             edge="start"
             color="inherit"
             sx={{ mr: 2 }}
+            onClick={props.toggleSideBar}
           >
             <MenuIcon />
           </IconButton>
