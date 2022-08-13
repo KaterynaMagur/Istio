@@ -1,4 +1,5 @@
 import {Route, Routes, Navigate} from "react-router-dom";
+import {useState} from "react";
 
 import './App.css';
 import {MainLayout} from "./layouts/MainLayout/MainLayout";
@@ -17,13 +18,41 @@ import PurposesTarget2 from "./components/SideBar/PurposesTarget2/PurposesTarget
 
 
 function App() {
+    const [incomeJanuary, setIncomeJanuary] = useState(1);
+    const [incomeFebruary, setIncomeFebruary] = useState(2);
+    const [incomeMarch, setIncomeMarch] = useState(3);
+    const [incomeApril, setIncomeApril] = useState(4);
+    const [incomeMay, setIncomeMay] = useState(5);
+    const [incomeJune, setIncomeJune] = useState(6);
+    const [incomeJuly, setIncomeJuly] = useState(7);
+    const [incomeAugust, setIncomeAugust] = useState(8);
+    const [incomeSeptember, setIncomeSeptember] = useState(9);
+    const [incomeOctober, setIncomeOctober] = useState(10);
+    const [incomeNovember, setIncomeNovember] = useState(11);
+    const [incomeDecember, setIncomeDecember] = useState(12);
+
 
     return (
         <MainLayout>
             <Routes>
                 <Route index path="dashboard" element={<Dashboard/>}/>
                 <Route path="goals" element={<Goals/>}/>
-                <Route path="IncomeSalary" element={<IncomeSalary/>}/>
+
+                <Route path="IncomeSalary" element={<IncomeSalary
+                    incomeJanuary={incomeJanuary}
+                    incomeFebruary={incomeFebruary}
+                    incomeMarch={incomeMarch}
+                    incomeApril={incomeApril}
+                    incomeMay={incomeMay}
+                    incomeJune={incomeJune}
+                    incomeJuly={incomeJuly}
+                    incomeAugust={incomeAugust}
+                    incomeSeptember={incomeSeptember}
+                    incomeOctober={incomeOctober}
+                    incomeNovember={incomeNovember}
+                    incomeDecember={incomeDecember}
+                />}/>
+
                 <Route path="IncomeDeposits" element={<IncomeDeposits/>}/>
                 <Route path="IncomeSelling" element={<IncomeSelling/>}/>
                 <Route path="IncomeFreeMoney" element={<IncomeFreeMoney/>}/>

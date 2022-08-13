@@ -1,0 +1,15 @@
+.incomeSalary {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.block1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
