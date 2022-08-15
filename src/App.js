@@ -20,11 +20,11 @@ import PurposesTarget2 from "./components/SideBar/PurposesTarget2/PurposesTarget
 
 
 function App() {
-    const [incomeJanuary, setIncomeJanuary] = useState(1);
+    const [incomeJanuary, setIncomeJanuary] = useState(500);
     const [incomeFebruary, setIncomeFebruary] = useState(2);
     const [incomeMarch, setIncomeMarch] = useState(3);
     const [incomeApril, setIncomeApril] = useState(4);
-    const [incomeMay, setIncomeMay] = useState(5);
+    const [incomeMay, setIncomeMay] = useState(200);
     const [incomeJune, setIncomeJune] = useState(6);
     const [incomeJuly, setIncomeJuly] = useState(7);
     const [incomeAugust, setIncomeAugust] = useState(8);
