@@ -14,6 +14,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Tooltip  from '@mui/material/Tooltip';
 import {NavLink} from "react-router-dom";
+import LoginForm from '../LoginForm/LoginForm'
 
 
 const routes = [
@@ -77,6 +78,12 @@ const Nav = styled('nav')`
 
  const Header = (props) => {
 
+  const [showLoginForm, setShowLoginForm] = React.useState(false);
+
+  const showForm = () => {
+    setShowLoginForm(showForm => !showForm);
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -132,19 +139,16 @@ const Nav = styled('nav')`
             </IconButton>
             </Tooltip>
 
-
-        
             <Tooltip title="Open settings">
-              <IconButton color="inherit"  >
-              <AccountCircle/>
+              <IconButton color="inherit" onClick={showForm } >
+                <AccountCircle   />
               </IconButton>
             </Tooltip>
             
-
-
           </Box>
         </Toolbar>
       </AppBar>
+      {showLoginForm && <LoginForm />  }
     </Box>
   );
 }
