@@ -120,14 +120,6 @@ const Nav = styled('nav')`
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 
-            <Tooltip title="Open Mail">
-            <IconButton size="large" color="inherit">
-              <Badge badgeContent={0} color="error">
-                <MailIcon/>
-              </Badge>
-            </IconButton>
-            </Tooltip>
-
             <Tooltip title="Open Notifications">
             <IconButton
               size="large"

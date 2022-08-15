@@ -39,7 +39,9 @@ const RetailMenu = () => {
                                    fontSize: '1.5rem',
                                }}
                 >
+                    <NavLink to={'/RetailToogleMenu'}>
                     Розхід
+                    </NavLink>
                 </ListSubheader>
             }>
 
