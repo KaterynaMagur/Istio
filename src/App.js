@@ -9,12 +9,14 @@ import IncomeSalary from "./components/SideBar/IncomeSalary/IncomeSalary";
 import IncomeDeposits from "./components/SideBar/IncomeDeposits/IncomeDeposits";
 import IncomeSelling from "./components/SideBar/IncomeSelling/IncomeSelling";
 import IncomeFreeMoney from "./components/SideBar/IncomeFreeMoney/IncomeFreeMoney";
+import RetailToogleMenu from "./components/SideBar/RetailToogleMenu/RetailToogleMenu";
 import RetailProducts from "./components/SideBar/RetailProducts/RetailProducts";
 import RetailPayments from "./components/SideBar/RetailPayments/RetailPayments";
 import RetailClothing from "./components/SideBar/RetailClothing/RetailClothing";
 import RetailVacation from "./components/SideBar/RetailVacation/RetailVacation";
 import PurposesTarget1 from "./components/SideBar/PurposesTarget1/PurposesTarget1";
 import PurposesTarget2 from "./components/SideBar/PurposesTarget2/PurposesTarget2";
+
 
 
 function App() {
@@ -53,9 +55,12 @@ function App() {
                     incomeDecember={incomeDecember}
                 />}/>
 
+                
+
                 <Route path="IncomeDeposits" element={<IncomeDeposits/>}/>
                 <Route path="IncomeSelling" element={<IncomeSelling/>}/>
                 <Route path="IncomeFreeMoney" element={<IncomeFreeMoney/>}/>
+                <Route path="RetailToogleMenu" element={<RetailToogleMenu/>}/>
                 <Route path="RetailProducts" element={<RetailProducts/>}/>
                 <Route path="RetailPayments" element={<RetailPayments/>}/>
                 <Route path="RetailClothing" element={<RetailClothing/>}/>

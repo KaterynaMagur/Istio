@@ -7,6 +7,7 @@ export const colors = {
         main: deepPurple[600],
         light: deepPurple[50],
         dark: deepPurple[800],
+        hover: deepPurple[200],
     },
     secondary: {
         main: blue[600],
