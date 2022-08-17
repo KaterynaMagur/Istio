@@ -1,0 +1,15 @@
+.IncomeSelling{
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.IncomeSelling-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.IncomeSelling-block1{
+    display: flex;
+    justify-content: space-between;
+}

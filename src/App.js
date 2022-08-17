@@ -32,6 +32,46 @@ function App() {
     const [incomeOctober, setIncomeOctober] = useState(10);
     const [incomeNovember, setIncomeNovember] = useState(11);
     const [incomeDecember, setIncomeDecember] = useState(12);
+    const [incomeSalaryYear, setIncomeSalaryYear] = useState(2022);
+
+    const [incomeDepositsJanuary, setIncomeDepositsJanuary] = useState(10);
+    const [incomeDepositsFebruary, setIncomeDepositsFebruary] = useState(20);
+    const [incomeDepositsMarch, setIncomeDepositsMarch] = useState(30);
+    const [incomeDepositsApril, setIncomeDepositsApril] = useState(40);
+    const [incomeDepositsMay, setIncomeDepositsMay] = useState(50);
+    const [incomeDepositsJune, setIncomeDepositsJune] = useState(60);
+    const [incomeDepositsJuly, setIncomeDepositsJuly] = useState(70);
+    const [incomeDepositsAugust, setIncomeDepositsAugust] = useState(80);
+    const [incomeDepositsSeptember, setIncomeDepositsSeptember] = useState(90);
+    const [incomeDepositsOctober, setIncomeDepositsOctober] = useState(100);
+    const [incomeDepositsNovember, setIncomeDepositsNovember] = useState(110);
+    const [incomeDepositsDecember, setIncomeDepositsDecember] = useState(120);
+
+    const [incomeSellingJanuary, setIncomeSellingJanuary] = useState(100);
+    const [incomeSellingFebruary, setIncomeSellingFebruary] = useState(200);
+    const [incomeSellingMarch, setIncomeSellingMarch] = useState(300);
+    const [incomeSellingApril, setIncomeSellingApril] = useState(400);
+    const [incomeSellingMay, setIncomeSellingMay] = useState(500);
+    const [incomeSellingJune, setIncomeSellingJune] = useState(600);
+    const [incomeSellingJuly, setIncomeSellingJuly] = useState(700);
+    const [incomeSellingAugust, setIncomeSellingAugust] = useState(800);
+    const [incomeSellingSeptember, setIncomeSellingSeptember] = useState(900);
+    const [incomeSellingOctober, setIncomeSellingOctober] = useState(1000);
+    const [incomeSellingNovember, setIncomeSellingNovember] = useState(1100);
+    const [incomeSellingDecember, setIncomeSellingDecember] = useState(1200);
+
+    const [incomeFreeMoneyJanuary, setIncomeFreeMoneyJanuary] = useState(1000);
+    const [incomeFreeMoneyFebruary, setIncomeFreeMoneyFebruary] = useState(2000);
+    const [incomeFreeMoneyMarch, setIncomeFreeMoneyMarch] = useState(3000);
+    const [incomeFreeMoneyApril, setIncomeFreeMoneyApril] = useState(4000);
+    const [incomeFreeMoneyMay, setIncomeFreeMoneyMay] = useState(5000);
+    const [incomeFreeMoneyJune, setIncomeFreeMoneyJune] = useState(6000);
+    const [incomeFreeMoneyJuly, setIncomeFreeMoneyJuly] = useState(7000);
+    const [incomeFreeMoneyAugust, setIncomeFreeMoneyAugust] = useState(8000);
+    const [incomeFreeMoneySeptember, setIncomeFreeMoneySeptember] = useState(9000);
+    const [incomeFreeMoneyOctober, setIncomeFreeMoneyOctober] = useState(10000);
+    const [incomeFreeMoneyNovember, setIncomeFreeMoneyNovember] = useState(11000);
+    const [incomeFreeMoneyDecember, setIncomeFreeMoneyDecember] = useState(12000);
 
 
     return (
@@ -53,13 +93,56 @@ function App() {
                     incomeOctober={incomeOctober}
                     incomeNovember={incomeNovember}
                     incomeDecember={incomeDecember}
+                    incomeSalaryYear={incomeSalaryYear}
+                    setIncomeSalaryYear={setIncomeSalaryYear}
                 />}/>
 
-                
+                <Route path="IncomeDeposits" element={<IncomeDeposits
+                    incomeDepositsJanuary={incomeDepositsJanuary}
+                    incomeDepositsFebruary={incomeDepositsFebruary}
+                    incomeDepositsMarch={incomeDepositsMarch}
+                    incomeDepositsApril={incomeDepositsApril}
+                    incomeDepositsMay={incomeDepositsMay}
+                    incomeDepositsJune={incomeDepositsJune}
+                    incomeDepositsJuly={incomeDepositsJuly}
+                    incomeDepositsAugust={incomeDepositsAugust}
+                    incomeDepositsSeptember={incomeDepositsSeptember}
+                    incomeDepositsOctober={incomeDepositsOctober}
+                    incomeDepositsNovember={incomeDepositsNovember}
+                    incomeDepositsDecember={incomeDepositsDecember}
+                />}/>
 
-                <Route path="IncomeDeposits" element={<IncomeDeposits/>}/>
-                <Route path="IncomeSelling" element={<IncomeSelling/>}/>
-                <Route path="IncomeFreeMoney" element={<IncomeFreeMoney/>}/>
+
+                <Route path="IncomeSelling" element={<IncomeSelling
+                    incomeSellingJanuary={incomeSellingJanuary}
+                    incomeSellingFebruary={incomeSellingFebruary}
+                    incomeSellingMarch={incomeSellingMarch}
+                    incomeSellingApril={incomeSellingApril}
+                    incomeSellingMay={incomeSellingMay}
+                    incomeSellingJune={incomeSellingJune}
+                    incomeSellingJuly={incomeSellingJuly}
+                    incomeSellingAugust={incomeSellingAugust}
+                    incomeSellingSeptember={incomeSellingSeptember}
+                    incomeSellingOctober={incomeSellingOctober}
+                    incomeSellingNovember={incomeSellingNovember}
+                    incomeSellingDecember={incomeSellingDecember}
+                />}/>
+
+                <Route path="IncomeFreeMoney" element={<IncomeFreeMoney
+                    incomeFreeMoneyJanuary={incomeFreeMoneyJanuary}
+                    incomeFreeMoneyFebruary={incomeFreeMoneyFebruary}
+                    incomeFreeMoneyMarch={incomeFreeMoneyMarch}
+                    incomeFreeMoneyApril={incomeFreeMoneyApril}
+                    incomeFreeMoneyMay={incomeFreeMoneyMay}
+                    incomeFreeMoneyJune={incomeFreeMoneyJune}
+                    incomeFreeMoneyJuly={incomeFreeMoneyJuly}
+                    incomeFreeMoneyAugust={incomeFreeMoneyAugust}
+                    incomeFreeMoneySeptember={incomeFreeMoneySeptember}
+                    incomeFreeMoneyOctober={incomeFreeMoneyOctober}
+                    incomeFreeMoneyNovember={incomeFreeMoneyNovember}
+                    incomeFreeMoneyDecember={incomeFreeMoneyDecember}
+                />}/>
+
                 <Route path="RetailToogleMenu" element={<RetailToogleMenu/>}/>
                 <Route path="RetailProducts" element={<RetailProducts/>}/>
                 <Route path="RetailPayments" element={<RetailPayments/>}/>

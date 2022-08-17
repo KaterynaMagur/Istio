@@ -1,6 +1,7 @@
 import React from 'react';
 import {Box, Typography} from "@mui/material";
 import List from "@mui/material/List";
+import Button from "@mui/material/Button";
 
 import './IncomeSalaryStyle.css';
 import {colors as palette} from "../../../theme";
@@ -19,16 +20,38 @@ const IncomeSalary = (props) => {
         incomeSeptember,
         incomeOctober,
         incomeNovember,
-        incomeDecember
+        incomeDecember,
+        incomeSalaryYear,
+        setIncomeSalaryYear,
     } = props;
+
 
     const arrProps = [];
     for (const propKey in props) {
-        arrProps.push(props[propKey]);
+        if (propKey !== 'incomeSalaryYear' && propKey !== 'setIncomeSalaryYear') {
+            arrProps.push(props[propKey]);
+        }
     }
 
     const incomeSumma = arrProps.reduce((acum, secv) => acum + secv);
     const incomeAverage = incomeSumma / arrProps.length;
+
+
+    const prevYear = () => {
+        if (incomeSalaryYear > 2020){
+        setIncomeSalaryYear(incomeSalaryYear - 1);
+        } else {
+            alert('Застарілий рік!!!');
+        }
+    }
+
+    const nextYear = () => {
+        if (incomeSalaryYear <= 2021){
+        setIncomeSalaryYear(incomeSalaryYear + 1);
+        } else {
+            alert('Такий рік ще не настав!!!');
+        }
+    }
 
 
     return (
@@ -46,6 +69,41 @@ const IncomeSalary = (props) => {
                         }}>
                 заробітня плата
             </Typography>
+
+            <Typography variant="h6" component="div" gutterBottom
+                        sx={{
+                            color: theme => palette.primary.main,
+                            fontWeight: 'bold',
+                            display: "flex",
+                            margin: '0.5rem 0 0.5rem 0',
+                            justifyContent: "start",
+                            alignItems: "center",
+                            padding: '0.5rem 0 0.5rem 0',
+                            textTransform: "uppercase"
+                        }}>
+
+                <Button onClick={prevYear} variant="contained"
+                        sx={{
+                            width: 100,
+                            borderRadius: 4,
+                            mr: 2,
+                            background: theme => palette.primary.main,
+                        }}>
+                    prevYear</Button>
+
+                year: {incomeSalaryYear}
+
+                <Button onClick={nextYear} variant="contained"
+                        sx={{
+                            width: 100,
+                            borderRadius: 4,
+                            ml: 2,
+                            background: theme => palette.primary.main,
+                        }}>
+                    nextYear</Button>
+
+            </Typography>
+
 
             <Box display="flex" justifyContent="center" alignItems="center" className={'incomeSalary'}>
                 <Box className={'block'} sx={{
