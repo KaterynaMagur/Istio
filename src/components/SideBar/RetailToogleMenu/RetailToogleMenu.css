@@ -1,0 +1,39 @@
+export default 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.currentMonth{
+    width: 100%;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 10px;
+
+}
+.retailCurrentMonth{
+    width: 200px;
+    margin: 0 auto;
+    color: #5e35b1;
+    
+    
+}
+.retailProducts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    color: #5e35b1;
+}
+.retailComunals{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    color: #5e35b1;
+}
+.retailOther{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    color: #5e35b1;
+}
