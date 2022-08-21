@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
 import CottageIcon from '@mui/icons-material/Cottage';
 import CelebrationIcon from '@mui/icons-material/Celebration';
+import FunctionsIcon from '@mui/icons-material/Functions';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import './RetailToogleMenu.css';
@@ -81,6 +82,14 @@ const RetailToogleMenu = () => {
 
   const [changedMonths,setChangedMonths]=useState('');
   const [changedRetail,setChangedRetail]=useState('');
+
+  const [displayDetails, setDisplayDetails] = useState(true);
+  
+  const productsRetail = changedRetail/2;
+  const comunalsRetail = changedRetail/8;
+  const otherRetail = changedRetail/4;
+  const sumRetail = productsRetail + comunalsRetail + otherRetail;
+
   
   return (
 
@@ -131,21 +140,49 @@ const RetailToogleMenu = () => {
                         className='retailProducts'>
                         <div>Продукти <BakeryDiningIcon ></BakeryDiningIcon></div>
                         
-                        <div>{changedRetail/2}</div>
+                        <div>{productsRetail}</div>
                         </div>
                         <div 
                         className='retailComunals'>
                         <div>Комунальні <CottageIcon></CottageIcon></div>
                         
-                        <div>{changedRetail/8}</div>
+                        <div>{comunalsRetail}</div>
                         </div>
                         <div 
                         className='retailOther'>
                         <div>Інше <CelebrationIcon></CelebrationIcon></div>
-                        <div>{changedRetail/4}</div>
+                        <div>{otherRetail}</div>
+                        </div>
+                        <div 
+                        className='retailSum'>
+                        <div>Разом <FunctionsIcon></FunctionsIcon></div>
+                        <div>{sumRetail}</div>
+                        </div>
+                        <div className='buttonForDetails'>
+                          <button 
+                          className='buttonStyle'
+                          onClick={()=>setDisplayDetails(!displayDetails)}
+                          >
+                            Детальніше
+                          </button>
                         </div>
                     </div>
                     ))}
+
+                    {displayDetails ?
+                    <div className='detailsContainer'>
+                    <div className='productsDetailsRetail'>
+                      <div className='productsDetailsRetailTitle'>Продукти</div>
+                    </div>
+                    <div className='comunalsDetailsRetail'>
+                    <div className='productsDetailsRetailTitle'>Комунальні</div>
+                    </div>
+                    <div className='otherDetailsRetail'>
+                    <div className='productsDetailsRetailTitle'>Інше</div>
+                    </div>
+                  </div>
+                    : null}
+                    
               </Box>
           </Grid>
         </Grid>
