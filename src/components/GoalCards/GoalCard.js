@@ -12,6 +12,8 @@ import {
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import LinearWithValueLabel from "./LineInProgress/LineInProgress";
 import BMW from "../../assets/images/BMW.webp"
+import {InputGoal} from "./InputGoal";
+import {useState} from "react";
 
 
 
@@ -28,17 +30,25 @@ const Container = styled("div")`
   }
 `;
 
+const BlaBla = styled("InputGoal")
+`
+  background: #5e35b1;
+  width: 300px;
+`
+
 export const GoalCard = (props) => {
+  const [buttonPopup, setButtonPopup] = useState(false);
   return <Card>
     <CardHeader
       action={
-        <IconButton aria-label="settings">
+        <IconButton aria-label="settings" onClick={() => setButtonPopup(true)}>
           <MoreVertIcon />
         </IconButton>
       }
       title="Моя ціль"
       subheader="від 04.08.22"
     />
+
     <CardActionArea>
       <CardContent>
         <Typography gutterBottom variant="h3" component="div" align="center">
@@ -61,5 +71,7 @@ export const GoalCard = (props) => {
         Закрити ціль
       </Button>
     </CardActions>
+      <InputGoal trigger={buttonPopup} setTrigger={setButtonPopup}></InputGoal>
+
   </Card>
 }
