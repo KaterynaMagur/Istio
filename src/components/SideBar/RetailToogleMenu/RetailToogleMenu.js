@@ -83,12 +83,16 @@ const RetailToogleMenu = () => {
   const [changedMonths,setChangedMonths]=useState('');
   const [changedRetail,setChangedRetail]=useState('');
 
-  const [displayDetails, setDisplayDetails] = useState(true);
+  const [displayDetails, setDisplayDetails] = useState(false);
   
   const productsRetail = changedRetail/2;
   const comunalsRetail = changedRetail/8;
   const otherRetail = changedRetail/4;
   const sumRetail = productsRetail + comunalsRetail + otherRetail;
+
+  const productsList = productsRetail/3;
+  const comunalsList = comunalsRetail/3;
+  const otherList = otherRetail/3;
 
   
   return (
@@ -138,24 +142,24 @@ const RetailToogleMenu = () => {
                       </div>
                         <div
                         className='retailProducts'>
-                        <div>Продукти <BakeryDiningIcon ></BakeryDiningIcon></div>
+                        <div>Продукти <BakeryDiningIcon className='iconMargin'></BakeryDiningIcon></div>
                         
                         <div>{productsRetail}</div>
                         </div>
                         <div 
                         className='retailComunals'>
-                        <div>Комунальні <CottageIcon></CottageIcon></div>
+                        <div>Комунальні <CottageIcon className='iconMargin'></CottageIcon></div>
                         
                         <div>{comunalsRetail}</div>
                         </div>
                         <div 
                         className='retailOther'>
-                        <div>Інше <CelebrationIcon></CelebrationIcon></div>
+                        <div>Інше <CelebrationIcon className='iconMargin'></CelebrationIcon></div>
                         <div>{otherRetail}</div>
                         </div>
                         <div 
                         className='retailSum'>
-                        <div>Разом <FunctionsIcon></FunctionsIcon></div>
+                        <div>Разом <FunctionsIcon className='iconMargin'></FunctionsIcon></div>
                         <div>{sumRetail}</div>
                         </div>
                         <div className='buttonForDetails'>
@@ -173,12 +177,34 @@ const RetailToogleMenu = () => {
                     <div className='detailsContainer'>
                     <div className='productsDetailsRetail'>
                       <div className='productsDetailsRetailTitle'>Продукти</div>
+                      <div className='productsDetailsRetailListContainer'>
+                        <ul className='productsDetailsRetailList'>
+                          <li className='productsDetailRetailListItem'><div>Сільпо</div><div>{productsList}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Ашан</div><div>{productsList}</div></li>
+                          <li className='productsDetailRetailListItem'><div>АТБ</div><div>{productsList}</div></li>
+                        </ul>
+                      </div>
+                      
                     </div>
                     <div className='comunalsDetailsRetail'>
                     <div className='productsDetailsRetailTitle'>Комунальні</div>
+                    <div className='productsDetailsRetailListContainer'>
+                        <ul className='productsDetailsRetailList'>
+                          <li className='productsDetailRetailListItem'><div>Газ</div><div>{comunalsList}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Вода</div><div>{comunalsList}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Елекроенергія</div><div>{comunalsList}</div></li>
+                        </ul>
+                      </div>
                     </div>
                     <div className='otherDetailsRetail'>
                     <div className='productsDetailsRetailTitle'>Інше</div>
+                    <div className='productsDetailsRetailListContainer'>
+                        <ul className='productsDetailsRetailList'>
+                          <li className='productsDetailRetailListItem'><div>Подорож у карпати</div><div>{otherList}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Мийка машини</div><div>{otherList}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Стрижка</div><div>{otherList}</div></li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                     : null}

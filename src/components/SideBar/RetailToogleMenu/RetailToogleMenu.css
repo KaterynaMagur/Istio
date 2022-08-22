@@ -42,6 +42,9 @@ export default
     justify-content: space-between; 
     color: #5e35b1;
 }
+.iconMargin{
+    transform: translate(0,6px);
+}
 
 
 
@@ -112,4 +115,19 @@ export default
     background-color: #EDE7F6;
     color: #5e35b1;
     text-align: center;
+}
+.productsDetailsRetailListContainer{
+    width: 100%;
+}
+.productsDetailsRetailList{
+    list-style: none;
+    width:100%;
+    
+}
+.productsDetailRetailListItem{
+    color: #5e35b1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
