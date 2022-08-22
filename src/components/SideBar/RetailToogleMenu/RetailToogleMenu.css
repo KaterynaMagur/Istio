@@ -12,12 +12,11 @@ export default
     padding: 10px;
 
 }
+
 .retailCurrentMonth{
     width: 200px;
     margin: 0 auto;
     color: #5e35b1;
-    
-    
 }
 .retailProducts{
     display: flex;
@@ -36,4 +35,99 @@ export default
     flex-direction: row;
     justify-content: space-between; 
     color: #5e35b1;
+}
+.retailSum{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    color: #5e35b1;
+}
+.iconMargin{
+    transform: translate(0,6px);
+}
+
+
+
+.detailsContainer{
+    width: 100%;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 10px;
+
+}
+
+.buttonForDetails{
+    display: flex;
+    flex: row;
+    justify-content: center;
+    align-items: center;
+}
+.buttonStyle{
+    padding: 10px;
+    width: 200px;
+    cursor:pointer;
+    background-color: #EDE7F6;
+    color: #5e35b1;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+}
+
+.detailsContainer{
+    width: 100%;
+    height: 100%;
+    
+}
+.productsDetailsRetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    
+}
+.comunalsDetailsRetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.otherDetailsRetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;    
+}
+.productsDetailsRetailTitle{
+    font-weight: bold;
+    width: 200px;
+    border: none;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    background-color: #EDE7F6;
+    color: #5e35b1;
+    text-align: center;
+}
+.productsDetailsRetailListContainer{
+    width: 100%;
+}
+.productsDetailsRetailList{
+    list-style: none;
+    width:100%;
+    
+}
+.productsDetailRetailListItem{
+    color: #5e35b1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
