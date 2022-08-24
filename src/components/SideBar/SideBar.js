@@ -4,22 +4,23 @@ import {Typography} from "@mui/material";
 import Button from '@mui/material/Button';
 
 import './SideBarStyle.css';
+import NewGoal from "./NewGoal/NewGoal";
 import TextMenu from "./TextMenu/TextMenu";
 import {colors as palette} from "../../theme";
-import NewGoal from "./NewGoal/NewGoal";
 
 
 const SideBar = () => {
     const [showNewGoal, setShowGoal] = useState(false);
 
+
     return (
         <Box className={'scroll'}
              sx={{
-            width: 250,
-            minHeight: '100vh',
-            background: "white",
-            marginBottom: 2,
-        }}>
+                 width: 250,
+                 minHeight: '100vh',
+                 background: "white",
+                 marginBottom: 2,
+             }}>
 
             <Typography variant="h4" component="div" gutterBottom
                         sx={{
@@ -37,10 +38,10 @@ const SideBar = () => {
 
             <TextMenu/>
 
-            {showNewGoal && <NewGoal/>}
+            {showNewGoal && <NewGoal setShowGoal={setShowGoal} showNewGoal={showNewGoal}/>}
 
             <div className={'btnSideBar'}>
-                <Button onClick={() =>  setShowGoal(!showNewGoal)} variant="contained"
+                <Button onClick={() => setShowGoal(!showNewGoal)} variant="contained"
                         sx={{
                             width: 200,
                             borderRadius: 4,
@@ -54,7 +55,6 @@ const SideBar = () => {
                     <span className={'btnSideBarText'}>Нова ціль</span>
                 </Button>
             </div>
-
         </Box>
     );
 };
