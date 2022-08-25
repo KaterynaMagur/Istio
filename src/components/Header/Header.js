@@ -133,7 +133,7 @@ const Nav = styled('nav')`
 
             <Tooltip title="Open settings">
               <IconButton color="inherit" onClick={showForm } >
-                <AccountCircle   />
+                <AccountCircle/>
               </IconButton>
             </Tooltip>
             
