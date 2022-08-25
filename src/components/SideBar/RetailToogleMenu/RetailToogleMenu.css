@@ -17,6 +17,7 @@ export default
     width: 200px;
     margin: 0 auto;
     color: #5e35b1;
+    text-align: center;
 }
 .retailProducts{
     display: flex;
