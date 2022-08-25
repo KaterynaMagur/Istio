@@ -1,0 +1,23 @@
+.PhotoNewGoal {
+    width: 90%;
+}
+
+.PhotoNewGoalText {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.setPhoto {
+    width: 50px;
+}
+
+.inputPhoto {
+    width: 33rem;
+}
+
+.iconClouse {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding-right: 0.5rem;
+}

@@ -1,25 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Box from '@mui/material/Box';
 import {Typography} from "@mui/material";
 import Button from '@mui/material/Button';
 
 import './SideBarStyle.css';
+import NewGoal from "./NewGoal/NewGoal";
 import TextMenu from "./TextMenu/TextMenu";
 import {colors as palette} from "../../theme";
 
 
 const SideBar = () => {
+    const [showNewGoal, setShowGoal] = useState(false);
 
-    const addNewPurposes = () => {
-    };
 
     return (
-        <Box className={'scroll'} sx={{
-            width: 250,
-            minHeight: '100vh',
-            background: "white",
-            marginBottom: 2,
-        }}>
+        <Box className={'scroll'}
+             sx={{
+                 width: 250,
+                 minHeight: '100vh',
+                 background: "white",
+                 marginBottom: 2,
+             }}>
 
             <Typography variant="h4" component="div" gutterBottom
                         sx={{
@@ -37,8 +38,10 @@ const SideBar = () => {
 
             <TextMenu/>
 
+            {showNewGoal && <NewGoal setShowGoal={setShowGoal} showNewGoal={showNewGoal}/>}
+
             <div className={'btnSideBar'}>
-                <Button onClick={addNewPurposes} variant="contained"
+                <Button onClick={() => setShowGoal(!showNewGoal)} variant="contained"
                         sx={{
                             width: 200,
                             borderRadius: 4,
@@ -52,7 +55,6 @@ const SideBar = () => {
                     <span className={'btnSideBarText'}>Нова ціль</span>
                 </Button>
             </div>
-
         </Box>
     );
 };
