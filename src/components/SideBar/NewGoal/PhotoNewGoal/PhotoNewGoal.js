@@ -1,24 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
-import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import CssBaseline from "@mui/material/CssBaseline";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 import './PhotoNewGoalStyle.css';
 import {colors as palette} from "../../../../theme";
 
 
-const PhotoNewGoal = ({setShowGoal, showNewGoal}) => {
+const PhotoNewGoal = ({setShowGoal, showNewGoal, setCurrentForm}) => {
     const {register, handleSubmit} = useForm();
+    const [selectedFile, setSelectedFile] = useState();
 
-    const onSubmit = (data) => {
+    const fileReader = new FileReader();
+
+    const handleOnchange = (event) => {
+        event.preventDefault();
+        const file = event.target.files[0];
+        setSelectedFile(file);
+    }
+
+    const onSubmit = () => {
         let wrapper = document.querySelector('.setPhoto');
-        let img = document.createElement('img');
-        wrapper.appendChild(img);
-        img.src = data.photoGoal[0].name
+        fileReader.readAsDataURL(selectedFile);
+        fileReader.onload = function (e) {
+            wrapper.innerHTML = '<img src="' + this.result + '" alt="photoGoal"/>'
+        }
     }
 
 
@@ -47,25 +58,31 @@ const PhotoNewGoal = ({setShowGoal, showNewGoal}) => {
                     mt: 0
                 }}>
 
-                <div className={'iconClouse'}>
+                <div className={'iconClose'}>
+                    <ArrowBackIcon
+                        sx={{color: theme => palette.primary.dark}}
+                        onClick={() => setCurrentForm('nameGoal')}
+                    />
                     <HighlightOffIcon
                         onClick={() => setShowGoal(!showNewGoal)}
                         sx={{color: theme => palette.primary.dark}}
                     />
                 </div>
 
-
-                <Typography component="h1" variant="h5" sx={{fontWeight: 'bold'}} className={'PhotoNewGoalText'}>
+                <Typography component="h1" variant="h5" sx={{fontWeight: 'bold', mt: 2}} className={'PhotoNewGoalText'}>
                     додати фото цілі
                 </Typography>
 
                 <div className={'setPhoto'}>
-
                 </div>
 
-
                 <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{mt: 1}}>
-                    <input {...register('photoGoal')} type="file" name="photoGoal" className={'inputPhoto'}/>
+                    <input {...register('photoGoal')}
+                           type="file"
+                           className={'inputPhoto'}
+                           accept={"image/*,.png,.jpg,.gif,.web"}
+                           onChange={handleOnchange}
+                    />
 
                     <Button
                         type="submit"

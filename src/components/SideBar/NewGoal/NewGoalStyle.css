@@ -1,7 +1,14 @@
-.NewGoal{
+.NewGoal {
     width: 50rem;
     position: fixed;
     top: 200px;
     right: 300px;
     z-index: 999;
+}
+
+.NameNewGoal-iconClose {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding-right: 0.5rem;
 }
