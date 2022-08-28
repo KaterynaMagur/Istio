@@ -20,3 +20,27 @@
    display: flex;
    justify-content: flex-end;
 }
+
+
+.modal {
+   display: none;
+   transition: 1s;
+}
+
+.modal.active{
+   transition: 1s;
+   display: flex;
+}
+
+.modal-content{
+   padding: 20px;
+   border-radius: 12px;
+   background-color: white;
+   transition: 1s;
+}
+
+
+.label{
+   transform: rotate(45deg);
+}
+
