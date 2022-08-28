@@ -5,13 +5,17 @@ import {
    Paper,
    Grid,
    Box
-  } from "@mui/material";
+} from "@mui/material";
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
+import Modal from './Modal.js';
 
 import "./style.css";
 
+import { useState } from 'react';
 
 const CardMonth = () => {
+   const [modalActive, setModalActive] = useState(false)
+
    return (
       <Grid
          item xs={4}>
@@ -40,8 +44,16 @@ const CardMonth = () => {
                   }}>
                      Обов'язкові витрати:20000
                   </Typography>
-                  <Button sx={{ borderRadius: '50px', border: '0px', minWidth: '0px', padding: '0px' }} variant="text"><ControlPointIcon /></Button>
+                  <Button sx={{ borderRadius: '50px', border: '0px', minWidth: '0px', padding: '0px'}}
+                     variant="text"
+                     onClick={() =>  setModalActive (!modalActive)}> 
+                     <ControlPointIcon/>
+                     
+                  </Button>
                </Box>
+
+               <Modal active={modalActive} setActive={setModalActive}/> 
+
                <Box
                   sx={{
                      display: "flex",
