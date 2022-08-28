@@ -12,7 +12,11 @@ const NewGoal = ({setShowGoal, showNewGoal}) => {
     if (currentForm === 'nameGoal'){
         return (
             <div className={'NewGoal'}>
-                <NameNewGoal setCurrentForm={setCurrentForm}/>
+                <NameNewGoal
+                    setCurrentForm={setCurrentForm}
+                    setShowGoal={setShowGoal}
+                    showNewGoal={showNewGoal}
+                />
             </div>
         );
     }
@@ -20,7 +24,11 @@ const NewGoal = ({setShowGoal, showNewGoal}) => {
     if (currentForm === 'photoGoal'){
         return (
             <div className={'NewGoal'}>
-                <PhotoNewGoal setShowGoal={setShowGoal} showNewGoal={showNewGoal}/>
+                <PhotoNewGoal
+                    setShowGoal={setShowGoal}
+                    showNewGoal={showNewGoal}
+                    setCurrentForm={setCurrentForm}
+                />
             </div>
         )
     }

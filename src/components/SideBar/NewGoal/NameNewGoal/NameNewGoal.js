@@ -6,12 +6,13 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 import './NameNewGoalStyle.css';
 import {colors as palette} from "../../../../theme";
 
 
-const NameNewGoal = ({setCurrentForm}) => {
+const NameNewGoal = ({setCurrentForm, setShowGoal, showNewGoal}) => {
     const {register, formState: {errors}, handleSubmit, reset,} = useForm();
 
     const onSubmit = (data) => {
@@ -20,6 +21,7 @@ const NameNewGoal = ({setCurrentForm}) => {
         }
         reset();
     }
+
 
     return (
         <Container component="main" className={'NameNewGoal'}
@@ -44,7 +46,15 @@ const NameNewGoal = ({setCurrentForm}) => {
                     borderRadius: '20px',
                     mt: 0
                 }}>
-                <Typography component="h1" variant="h5" sx={{fontWeight: 'bold'}} className={'NameNewGoalText'}>
+
+                <div className={'NameNewGoal-iconClose'}>
+                    <HighlightOffIcon
+                        onClick={() => setShowGoal(!showNewGoal)}
+                        sx={{color: theme => palette.primary.dark}}
+                    />
+                </div>
+
+                <Typography component="h1" variant="h5" sx={{fontWeight: 'bold', mt: 2}} className={'NameNewGoalText'}>
                     назва цілі
                 </Typography>
 
@@ -55,7 +65,7 @@ const NameNewGoal = ({setCurrentForm}) => {
                         className={'inputNameGoal'}
                         name="Password"
                         label="назва цілі"
-                        type="password"
+                        type="text"
                         autoComplete="current-password"
                         {...register('nameGoal', {required: true})}
                     />
@@ -70,7 +80,7 @@ const NameNewGoal = ({setCurrentForm}) => {
                         className={'inputNameGoal'}
                         name="Password"
                         label="запланована сума"
-                        type="password"
+                        type="number"
                         autoComplete="current-password"
                         {...register('priceGoal', {required: true})}
                     />

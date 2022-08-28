@@ -8,16 +8,20 @@
 }
 
 .setPhoto {
-    width: 50px;
+    margin-top: 0.5rem;
 }
 
 .inputPhoto {
     width: 33rem;
 }
 
-.iconClouse {
+.iconClose {
     width: 100%;
     display: flex;
-    justify-content: end;
-    padding-right: 0.5rem;
+    justify-content: space-between;
+    padding: 0 0.5rem 0 0.5rem;
+}
+
+.setPhoto > img {
+    width: 7rem;
 }
