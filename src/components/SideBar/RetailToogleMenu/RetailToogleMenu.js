@@ -202,12 +202,11 @@ const RetailToogleMenu = () => {
                     gap: 2,
                     width:'100%'
                   }}>
-                    {months.slice(0,1).map((currentMonth,index) => (
+                    
                     <div  
                       className='currentMonth'>
                       
                       <div 
-                        key={index} 
                         className='retailCurrentMonth'>
                           Розсхід за {changedMonths}
                       </div>
@@ -242,7 +241,7 @@ const RetailToogleMenu = () => {
                           </button>
                         </div>
                     </div>
-                    ))}
+                    
 
                     {displayDetails ?
                     <div className='detailsContainer'>
