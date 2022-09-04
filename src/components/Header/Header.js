@@ -10,11 +10,12 @@ import Badge from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Tooltip  from '@mui/material/Tooltip';
 import {NavLink} from "react-router-dom";
-import LoginForm from '../LoginForm/LoginForm'
+import LoginForm from '../LoginForm/LoginForm';
+import './Header.css'
+
 
 
 const routes = [
@@ -78,11 +79,13 @@ const Nav = styled('nav')`
 
  const Header = (props) => {
 
-  const [showLoginForm, setShowLoginForm] = React.useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  
 
   const showForm = () => {
     setShowLoginForm(showForm => !showForm);
   }
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -132,8 +135,9 @@ const Nav = styled('nav')`
             </Tooltip>
 
             <Tooltip title="Open settings">
-              <IconButton color="inherit" onClick={showForm } >
-                <AccountCircle/>
+              <IconButton color="inherit" onClick={showForm }>
+                {/* <AccountCircle/> */}
+                <img className='imgLogin' src={localStorage.getItem('profilePic')}></img>
               </IconButton>
             </Tooltip>
             

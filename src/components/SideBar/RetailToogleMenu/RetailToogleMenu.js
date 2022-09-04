@@ -111,7 +111,7 @@ const months =[
   },
   {
     month: 'Вересень',
-    retail: '0',
+    retail: '12342',
   },
   {
     month: 'Жовтень',
@@ -159,11 +159,6 @@ const RetailToogleMenu = () => {
   const comunalsList = comunalsRetail/3;
   const otherList = otherRetail/3;
 
-  
-  // const searchCurrentMonth = months.includes( ) 
-  // console.log()
-
- 
 
   
   return (
@@ -202,7 +197,6 @@ const RetailToogleMenu = () => {
                     gap: 2,
                     width:'100%'
                   }}>
-                    
                     <div  
                       className='currentMonth'>
                       
@@ -241,7 +235,6 @@ const RetailToogleMenu = () => {
                           </button>
                         </div>
                     </div>
-                    
 
                     {displayDetails ?
                     <div className='detailsContainer'>

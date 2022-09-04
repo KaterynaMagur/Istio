@@ -11,8 +11,9 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import {signInWithGoogle} from '../../firebase-config';
 
-import {useForm} from 'react-hook-form';
+import {useForm, useState} from 'react-hook-form';
 import './../LoginForm/LoginForm.css';
 
 export default function LoginForm() {
@@ -134,7 +135,7 @@ export default function LoginForm() {
                   </Grid>
                   <Grid item>
                     <Link href="#" onClick={changeAuthMode} variant="body2">
-                      {"Немаєте акаунту ? Зареєструйтесь"}
+                      {"Вхід через Google"}
                     </Link>
                   </Grid>
                 </Grid>
@@ -251,68 +252,22 @@ export default function LoginForm() {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5" >
-                    Sign Up
+                    Sign Up with Google
                 </Typography>
 
                 <Box component="form" onSubmit={handleSubmit(onSubmit)}  sx={{ mt: 1 }}>
-                <TextField 
-                    margin="dense"
-                    fullWidth
-                    id="UserName"
-                    label="User Name"
-                    name="userName"
-                    autoComplete="off"
-                    autoFocus
-                    size="small"
-                    {...register('UserName', {
-                        required : "Обовязкове поле для заповнення",
-                    })}
-                    />
-                    {errors.UserName && <p className="errorMessage">{errors.UserName.message}</p>}
+                
                     
-                    <TextField 
-                    margin="dense"
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="off"
-                    autoFocus
-                    size="small"
-                    {...register('userLogin', {
-                        required : "Обовязкове поле для заповнення",
-                        pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: "Введіть валідну пошту"
-                        }
-                    })}
-                    />
-                    {errors.userLogin && <p className="errorMessage">{errors?.userLogin?.message}</p>}
-
-                    <TextField
-                    margin="dense"
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="current-password"
-                    size="small"
-                    {...register('userPassword', {required : true})}
-                    />
-                    {errors.userPassword && <p className="errorMessage">Обовязкове поле для заповнення</p>}
-
-                    <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Запам'ятати мене"
-                    />
+                    
+                 
                     <Button
+                    onClick={signInWithGoogle}
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2, }}
                     >
-                    Зареєструватись
+                   Увійти через google account
                     </Button>
                     <Grid container>
                     <Grid item>
@@ -327,5 +282,5 @@ export default function LoginForm() {
             </Container>
             
         );
-    }   
-}
+         }        
+}   
