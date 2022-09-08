@@ -44,7 +44,6 @@ export default function LoginForm() {
 
     //sent data to server on buttonClick
     const onSubmit = (data) => {
-        console.log(data);
         alert(JSON.stringify(data));
         reset();
     }

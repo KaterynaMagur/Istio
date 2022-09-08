@@ -138,6 +138,7 @@ const Nav = styled('nav')`
               <IconButton color="inherit" onClick={showForm }>
                 {/* <AccountCircle/> */}
                 <img className='imgLogin' src={localStorage.getItem('profilePic')}></img>
+                
               </IconButton>
             </Tooltip>
             
