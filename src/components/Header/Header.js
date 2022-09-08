@@ -92,7 +92,7 @@ const Nav = styled('nav')`
             size="large"
             edge="start"
             color="inherit"
-            sx={{ mr: 2 }}
+            sx={{ mr: 2}}
             onClick={props.toggleSideBar}
           >
             <MenuIcon />

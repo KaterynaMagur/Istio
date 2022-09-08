@@ -40,7 +40,9 @@ const IncomeMenu = () => {
                                    fontSize: '1.5rem',
                                }}
                 >
-                    Дохід
+                    <NavLink to={'/IncomeToogleMenu'}>
+                        Дохід
+                    </NavLink>
                 </ListSubheader>
             }>
 
