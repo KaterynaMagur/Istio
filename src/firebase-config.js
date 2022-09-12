@@ -30,6 +30,7 @@ const firebaseConfig = {
         const profilePic = result.user.photoURL;
         const userUID = result.user.uid;
         console.log(result);
+        console.log(userUID);
         
         
         localStorage.setItem('uid', userUID);
