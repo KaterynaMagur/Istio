@@ -12,10 +12,13 @@ import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import './RetailToogleMenu.css';
 
+import {collection,  doc, setDoc} from "firebase/firestore"; 
+import {db} from "../../../firebase-config";
+
 
 
 moment.locale('ua', {
-  months : 'Січень_Лютий_Березень_Квітень_Травень_Червень_Липень_Серпень_Вересень_Жовтень_Листопад_грудень'.split('_'),
+  months : 'Січень_Лютий_Березень_Квітень_Травень_Червень_Липень_Серпень_Вересень_Жовтень_Листопад_Грудень'.split('_'),
   monthsShort : 'Січ._Лют._Бер_Квт._Тра_Черв_Лип._Серп_Вер._Жов._Лис._Гру.'.split('_'),
   monthsParseExact : true,
   weekdays : 'Неділя_Понеділок_Вівторок_Середа_Чертвер_Пятниця_Субота'.split('_'),
@@ -111,7 +114,7 @@ const months =[
   },
   {
     month: 'Вересень',
-    retail: '0',
+    retail: '12342',
   },
   {
     month: 'Жовтень',
@@ -142,7 +145,10 @@ const Item = styled(Paper)(({ theme }) => ({
     lineHeight: '60px',
   }));
 
+  
+
 const RetailToogleMenu = () => {
+
   
  
   const [changedMonths,setChangedMonths]=useState(searchNow.month);
@@ -150,21 +156,46 @@ const RetailToogleMenu = () => {
 
   const [displayDetails, setDisplayDetails] = useState(false);
   
-  const productsRetail = changedRetail/2;
-  const comunalsRetail = changedRetail/8;
-  const otherRetail = changedRetail/4;
-  const sumRetail = productsRetail + comunalsRetail + otherRetail;
+  const products1 = 2101;
+  const products2 = 734;
+  const products3 = 241;
 
-  const productsList = productsRetail/3;
-  const comunalsList = comunalsRetail/3;
-  const otherList = otherRetail/3;
+  const comunalsWater = 451;
+  const comunalsGas = 1234;
+  const comunalsElectrisity = 321;
 
-  
-  // const searchCurrentMonth = months.includes( ) 
-  // console.log()
+  const other1 = 2530;
+  const other2 = 210;
+  const other3 = 520;
+
+  const productsRetail = products1 + products2 + products3; 
+  const comunalsRetail = comunalsElectrisity + comunalsGas + comunalsWater; 
+  const otherRetail = other1 + other2+ other3;
 
  
+  const sumRetail = productsRetail + comunalsRetail + otherRetail;
 
+  const getDataToDB = async () =>{
+    const usersRef = collection(db, "usersRetail");
+  await setDoc(doc(usersRef, localStorage.getItem('uid')), {
+    retailProducts1: products1,
+    retailProducts2: products2,
+    retailProducts3: products3,
+    retailProducts: productsRetail,
+
+    retailComunals1: comunalsWater,
+    retailComunals2: comunalsGas,
+    retailComunals3: comunalsElectrisity,
+    retailComunals: comunalsRetail,
+    
+    retailOther1: other1,
+    retailOther2: other2,
+    retailOther3: other3,
+    retailOther: otherRetail,
+
+    retailzOverAll: sumRetail,
+  });
+}
   
   return (
 
@@ -202,12 +233,10 @@ const RetailToogleMenu = () => {
                     gap: 2,
                     width:'100%'
                   }}>
-                    {months.slice(0,1).map((currentMonth,index) => (
                     <div  
                       className='currentMonth'>
                       
                       <div 
-                        key={index} 
                         className='retailCurrentMonth'>
                           Розсхід за {changedMonths}
                       </div>
@@ -236,13 +265,12 @@ const RetailToogleMenu = () => {
                         <div className='buttonForDetails'>
                           <button 
                           className='buttonStyle'
-                          onClick={()=>setDisplayDetails(!displayDetails)}
+                          onClick={()=>setDisplayDetails(!displayDetails) & getDataToDB()}
                           >
                             Детальніше
                           </button>
                         </div>
                     </div>
-                    ))}
 
                     {displayDetails ?
                     <div className='detailsContainer'>
@@ -250,9 +278,9 @@ const RetailToogleMenu = () => {
                       <div className='productsDetailsRetailTitle'>Продукти</div>
                       <div className='productsDetailsRetailListContainer'>
                         <ul className='productsDetailsRetailList'>
-                          <li className='productsDetailRetailListItem'><div>Сільпо</div><div>{productsList}</div></li>
-                          <li className='productsDetailRetailListItem'><div>Ашан</div><div>{productsList}</div></li>
-                          <li className='productsDetailRetailListItem'><div>АТБ</div><div>{productsList}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Сільпо</div><div>{products1}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Ашан</div><div>{products2}</div></li>
+                          <li className='productsDetailRetailListItem'><div>АТБ</div><div>{products3}</div></li>
                         </ul>
                       </div>
                       
@@ -261,9 +289,9 @@ const RetailToogleMenu = () => {
                     <div className='productsDetailsRetailTitle'>Комунальні</div>
                     <div className='productsDetailsRetailListContainer'>
                         <ul className='productsDetailsRetailList'>
-                          <li className='productsDetailRetailListItem'><div>Газ</div><div>{comunalsList}</div></li>
-                          <li className='productsDetailRetailListItem'><div>Вода</div><div>{comunalsList}</div></li>
-                          <li className='productsDetailRetailListItem'><div>Елекроенергія</div><div>{comunalsList}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Газ</div><div>{comunalsWater}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Вода</div><div>{comunalsGas}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Елекроенергія</div><div>{comunalsElectrisity}</div></li>
                         </ul>
                       </div>
                     </div>
@@ -271,9 +299,9 @@ const RetailToogleMenu = () => {
                     <div className='productsDetailsRetailTitle'>Інше</div>
                     <div className='productsDetailsRetailListContainer'>
                         <ul className='productsDetailsRetailList'>
-                          <li className='productsDetailRetailListItem'><div>Подорож у карпати</div><div>{otherList}</div></li>
-                          <li className='productsDetailRetailListItem'><div>Мийка машини</div><div>{otherList}</div></li>
-                          <li className='productsDetailRetailListItem'><div>Стрижка</div><div>{otherList}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Подорож у карпати</div><div>{other1}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Мийка машини</div><div>{other2}</div></li>
+                          <li className='productsDetailRetailListItem'><div>Стрижка</div><div>{other3}</div></li>
                         </ul>
                       </div>
                     </div>

@@ -1,4 +1,4 @@
-export default 
+
 *{
     margin: 0;
     padding: 0;
@@ -132,3 +132,9 @@ export default
     flex-direction: row;
     justify-content: space-between;
 }
+
+
+/* spring #ffc0cb to ffa3b8
+summer #ffd700 to #FF9912
+autumn #FFA500  , #ff6700
+winter #4682B4 to #3d59AB */
