@@ -4,12 +4,53 @@ import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
+import moment from 'moment';
+
+import {addDoc, collection, setDoc} from "firebase/firestore"; 
+import {db} from "../../firebase-config";
 
 const ariaLabel = {'aria-label': 'description'};
+
+moment.locale('uk');
+moment.updateLocale('uk');
+const currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+console.log(currentDate);
 
 
 const Modal = ({active, setActive}) => {
     const [showSelect, setShowSelect] = useState('Дохід');
+
+    const getTestToDB = async () =>{
+        const usersRef = collection(db, 'users');
+        await addDoc(collection(db, 'users'));
+        await setDoc(usersRef,  {
+        email: "gvoit@gmail.com",
+        password: 321,
+        userName:'Yurii',
+    });
+    }
+
+    const getIncomeToDB = async () =>{
+        const usersRef = collection(db, 'users','incomes');
+        await addDoc(collection(db, 'users','incomes'));
+        await setDoc(usersRef,  {
+        incomeName: "costName",
+        currency: 'UAH',
+        date: currentDate,
+        sumOfIncome: 23421
+      });
+    }
+
+    const getCostsToDB = async () =>{
+        const usersRef = collection(db, 'users','costs');
+        await addDoc(collection(db, 'users','costs'));
+        await setDoc(usersRef,  {
+        costName: "costName",
+        date: currentDate,
+        kindOfCost: 'setKindCost',
+        sumOfCost: 482
+      });
+    }
 
 
     return (
@@ -54,7 +95,11 @@ const Modal = ({active, setActive}) => {
                     </NativeSelect>}
 
                 </FormControl>
-                <Button sx={{borderRadius: '12px', width: "100%", marginTop: "15px"}} variant="text">Зберегти</Button>
+                <Button 
+                    sx={{borderRadius: '12px', width: "100%", marginTop: "15px"}} 
+                    variant="text"
+                    onClick={getIncomeToDB & getCostsToDB &  getTestToDB}
+                    >Зберегти</Button>
             </div>
         </div>
     )
