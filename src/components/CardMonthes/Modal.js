@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import './style.css';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
@@ -14,58 +14,65 @@ const ariaLabel = {'aria-label': 'description'};
 moment.locale('uk');
 moment.updateLocale('uk');
 const currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-console.log(currentDate);
+
 
 
 const Modal = ({active, setActive}) => {
     const [showSelect, setShowSelect] = useState('Дохід');
+    const [message, setMessage] = useState();
 
-    // const getTestToDB = async () =>{
-    //     const usersRef = collection(db, 'users');
-    //     await addDoc(usersRef,  {
-    //     email: "gvoit@gmail.com",
-    //     password: 321,
-    //     userName:'Yurii',
-    // });
-    // }
+const hadleChange = (event) =>{
+    setMessage(event.target.value)
+}
 
     const getDataToDB = async () =>{
+    
         const usersRef = collection(db,'users');
-        const usersRefInccome = collection(db, 'users','incomes');
-        const usersRefGoal = collection(db, 'users','goals');
-        const usersRefCosts = collection(db, 'users','incomes');
-
-        await setDoc(doc(usersRef, localStorage.getItem('uid')),{
+        
+            const usersRefInccome =collection(db, `users/${localStorage.getItem('uid')}/incomes`);
+            const usersRefGoal = collection(db, `users/${localStorage.getItem('uid')}/goals`);
+            const usersRefCosts = collection(db, `users/${localStorage.getItem('uid')}/costs`);
+        
+        
+    
+        await  setDoc(doc(usersRef, localStorage.getItem('uid')),{
             email: localStorage.getItem('email'),
             password: 321,
             userName: localStorage.getItem('name'),
         });
-        await addDoc(usersRefInccome,  {
-            incomeName: "costName",
-            currency: 'UAH',
-            date: currentDate,
-            sumOfIncome: 23421,
-        });
-        await addDoc(usersRefGoal,  {
-            goalImg: "costName",
-            goalName: 'UAH',
-            date: currentDate,
-            sumOfGoals: 23421,
-        });
-        await addDoc(usersRefCosts,  {
-            costName: "costName",
-            date: currentDate,
-            kindOfCost: 'setKindCost',
-            sumOfCost: 482,
-        });
+        {showSelect === 'Дохід' &&
+         await addDoc(usersRefInccome,  {
+             incomeName: showSelect,
+             currency: 'UAH',
+             date: currentDate,
+             sumOfIncome: message,
+         })};
+         {showSelect === 'Ціль' &&
+         await addDoc(usersRefGoal,  {
+             goalImg: showSelect,
+             goalName: 'UAH',
+             date: currentDate,
+             sumOfGoals: message,
+         })};
+         {showSelect === 'Витрата' &&
+         await addDoc(usersRefCosts,  {
+             costName: showSelect,
+             date: currentDate,
+             kindOfCost: 'setKindCost',
+             sumOfCost: message,
+         })};
     }
-
-
+    
 
     return (
         <div className={active ? "modal active" : "modal"}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
-                <Input placeholder="Сума" inputProps={ariaLabel} sx={{width: '100%', marginTop: "15px"}}/>
+                <Input 
+                    onChange = {hadleChange}
+                    value = {message}
+                    placeholder="Сума"
+                    inputProps={ariaLabel}
+                    sx={{width: '100%', marginTop: "15px"}}/>
 
                 <FormControl fullWidth sx={{marginTop: "10px"}}>
                     <NativeSelect
@@ -107,8 +114,9 @@ const Modal = ({active, setActive}) => {
                 <Button 
                     sx={{borderRadius: '12px', width: "100%", marginTop: "15px"}} 
                     variant="text"
-                    onClick={() => getDataToDB() }
-                    >Зберегти</Button>
+                    onClick={() => getDataToDB()}
+                    >
+                    Зберегти</Button>
             </div>
         </div>
     )

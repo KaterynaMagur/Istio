@@ -11,13 +11,15 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import {signInWithGoogle} from '../../firebase-config';
 
 import {useForm} from 'react-hook-form';
+import { useState } from 'react';
 import './../LoginForm/LoginForm.css';
 
 export default function LoginForm() {
 
-    const [authMode, setAuthMode] = React.useState("signin");
+    const [authMode, setAuthMode] = useState("signin");
 
     const changeAuthMode = () => {
         setAuthMode(authMode === "signin" ? "signup" : "signin");
@@ -48,7 +50,6 @@ export default function LoginForm() {
 
     //sent data to server on buttonClick
     const onSubmit = (data) => {
-        console.log(data);
         alert(JSON.stringify(data));
         reset();
     }
@@ -380,7 +381,7 @@ export default function LoginForm() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                onClick={ () =>  }
+                onClick={signInWithGoogle}
 
                 sx={{ mt: 3, mb: 2 }}
               >

@@ -15,6 +15,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Tooltip  from '@mui/material/Tooltip';
 import {NavLink} from "react-router-dom";
 import LoginForm from '../LoginForm/LoginForm'
+import './Header.css';
 
 
 const routes = [
@@ -133,7 +134,7 @@ const Nav = styled('nav')`
 
             <Tooltip title="Open settings">
               <IconButton color="inherit" onClick={showForm } >
-                <AccountCircle/>
+              <img className='imgLogin' src={localStorage.getItem('profilePic')}></img>
               </IconButton>
             </Tooltip>
             
