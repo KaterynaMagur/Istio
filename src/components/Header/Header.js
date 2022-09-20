@@ -134,7 +134,7 @@ const Nav = styled('nav')`
 
             <Tooltip title="Open settings">
               <IconButton color="inherit" onClick={showForm } >
-              <img className='imgLogin' src={localStorage.getItem('profilePic')}></img>
+                <img className='imgLogin' src={localStorage.getItem('profilePic')}></img>
               </IconButton>
             </Tooltip>
             

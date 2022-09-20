@@ -5,21 +5,26 @@ import Input from '@mui/material/Input';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 import moment from 'moment';
+import {momentConfig} from '../../momentConfig';
 
 import { addDoc, collection, doc, setDoc} from "firebase/firestore"; 
 import {db} from "../../firebase-config";
 
 const ariaLabel = {'aria-label': 'description'};
 
-moment.locale('uk');
-moment.updateLocale('uk');
-const currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+
+const currentDate = moment().format('LLLL');
+
+
 
 
 
 const Modal = ({active, setActive}) => {
     const [showSelect, setShowSelect] = useState('Дохід');
+    const [selectIncome,setSelectIncome]=useState('Заробітня Плата');
+    const [selectCost,setSelectCost]=useState('Продукти');
     const [message, setMessage] = useState();
+
 
 const hadleChange = (event) =>{
     setMessage(event.target.value)
@@ -29,6 +34,7 @@ const hadleChange = (event) =>{
     
         const usersRef = collection(db,'users');
         
+
             const usersRefInccome =collection(db, `users/${localStorage.getItem('uid')}/incomes`);
             const usersRefGoal = collection(db, `users/${localStorage.getItem('uid')}/goals`);
             const usersRefCosts = collection(db, `users/${localStorage.getItem('uid')}/costs`);
@@ -44,6 +50,7 @@ const hadleChange = (event) =>{
          await addDoc(usersRefInccome,  {
              incomeName: showSelect,
              currency: 'UAH',
+             kindOfIncome: selectIncome,
              date: currentDate,
              sumOfIncome: message,
          })};
@@ -58,7 +65,7 @@ const hadleChange = (event) =>{
          await addDoc(usersRefCosts,  {
              costName: showSelect,
              date: currentDate,
-             kindOfCost: 'setKindCost',
+             kindOfCost: selectCost,
              sumOfCost: message,
          })};
     }
@@ -68,6 +75,7 @@ const hadleChange = (event) =>{
         <div className={active ? "modal active" : "modal"}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
                 <Input 
+                    type = "number"
                     onChange = {hadleChange}
                     value = {message}
                     placeholder="Сума"
@@ -92,6 +100,7 @@ const hadleChange = (event) =>{
                         inputProps={{
                             id: 'uncontrolled-native',
                         }}
+                        onChange={(e) => setSelectIncome(e.target.value)}
                     >
                         <option>Заробітня плата</option>
                         <option>Відсотки з вкладів</option>
@@ -103,6 +112,7 @@ const hadleChange = (event) =>{
                         inputProps={{
                             id: 'uncontrolled-native',
                         }}
+                        onChange={(e) => setSelectCost(e.target.value)}
                     >
                         <option>Продукти</option>
                         <option>Комунальні платежі</option>
