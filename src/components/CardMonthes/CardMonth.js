@@ -1,20 +1,59 @@
-import {
-   Typography,
-   Button,
-   CardHeader,
-   Paper,
-   Grid,
-   Box
-} from "@mui/material";
+import React, {useCallback, useRef, useState} from "react";
+import {Typography,Button,CardHeader,Paper,Grid,Box} from "@mui/material";
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import Modal from './Modal.js';
 
+import moment from 'moment';
+
+
+import { collection, getDocs, query, where} from "firebase/firestore"; 
+import {db} from "../../firebase-config";
 import "./style.css";
 
-import { useState } from 'react';
+
+
+
 
 const CardMonth = () => {
-   const [modalActive, setModalActive] = useState(false)
+   const [modalActive, setModalActive] = useState(false);
+
+   const [incomes,setIncomes] = useState([]);
+   const [goals,setGoals] = useState([]);
+   const [costs,setCosts] = useState([]);
+   
+
+
+   const getDataFromDB =  async ()=>{
+      
+
+
+      const usersRefIncome =collection(db, `users/${localStorage.getItem('uid')}/incomes`);
+      const usersRefGoal = collection(db, `users/${localStorage.getItem('uid')}/goals`);
+      const usersRefCosts = collection(db, `users/${localStorage.getItem('uid')}/costs`);
+      
+         const income = await  getDocs(usersRefIncome);
+         setIncomes(income.docs
+               .map( doc =>({id:doc.id, ...doc.data()}))
+               );
+         const goals = await  getDocs(usersRefGoal);
+         setGoals(goals.docs
+               .map(doc =>({id:doc.id, ...doc.data()}))
+               );
+         const costs = await  getDocs(usersRefCosts);
+         setCosts(costs.docs
+               .map(doc =>({id:doc.id, ...doc.data()}))
+               );      
+   };
+
+   getDataFromDB();  
+   
+   
+    
+    
+   
+
+
+
 
    return (
       <Grid
@@ -42,7 +81,7 @@ const CardMonth = () => {
                      display: "flex",
                      paddingTop: "5px"
                   }}>
-                     Обов'язкові витрати:20000
+                    
                   </Typography>
                   <Button sx={{ borderRadius: '50px', border: '0px', minWidth: '0px', padding: '0px'}}
                      variant="text"
@@ -109,8 +148,8 @@ const CardMonth = () => {
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between", padding: "10px" }}>
                <Typography>
-                  Загальний дохід:
-                  3000
+                  Загалний Дохід: 
+                  10000
                </Typography>
                <Typography>
                   Загальні витрати:

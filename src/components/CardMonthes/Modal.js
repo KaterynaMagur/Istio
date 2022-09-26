@@ -5,10 +5,12 @@ import Input from '@mui/material/Input';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 import moment from 'moment';
-import {momentConfig} from '../../momentConfig';
 
-import { addDoc, collection, doc, setDoc} from "firebase/firestore"; 
+
+
+import { addDoc, collection, doc, getDocs, setDoc, query, where} from "firebase/firestore"; 
 import {db} from "../../firebase-config";
+
 
 const ariaLabel = {'aria-label': 'description'};
 
@@ -19,11 +21,12 @@ const currentDate = moment().format('LLLL');
 
 
 
+
 const Modal = ({active, setActive}) => {
     const [showSelect, setShowSelect] = useState('Дохід');
     const [selectIncome,setSelectIncome]=useState('Заробітня Плата');
     const [selectCost,setSelectCost]=useState('Продукти');
-    const [message, setMessage] = useState();
+    const [message, setMessage] = useState(Number);
 
 
 const hadleChange = (event) =>{
@@ -52,30 +55,31 @@ const hadleChange = (event) =>{
              currency: 'UAH',
              kindOfIncome: selectIncome,
              date: currentDate,
-             sumOfIncome: message,
+             sumOfIncome: Number(message),
          })};
          {showSelect === 'Ціль' &&
          await addDoc(usersRefGoal,  {
              goalImg: showSelect,
              goalName: 'UAH',
              date: currentDate,
-             sumOfGoals: message,
+             sumOfGoals: Number(message),
          })};
          {showSelect === 'Витрата' &&
          await addDoc(usersRefCosts,  {
              costName: showSelect,
              date: currentDate,
              kindOfCost: selectCost,
-             sumOfCost: message,
+             sumOfCost: Number(message),
          })};
     }
+
+   
     
 
     return (
         <div className={active ? "modal active" : "modal"}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
                 <Input 
-                    type = "number"
                     onChange = {hadleChange}
                     value = {message}
                     placeholder="Сума"
@@ -124,7 +128,7 @@ const hadleChange = (event) =>{
                 <Button 
                     sx={{borderRadius: '12px', width: "100%", marginTop: "15px"}} 
                     variant="text"
-                    onClick={() => getDataToDB()}
+                    onClick={() => getDataToDB() }
                     >
                     Зберегти</Button>
             </div>
