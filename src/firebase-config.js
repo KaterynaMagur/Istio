@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from '@firebase/firestore';
-import {getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
+import {getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBmby5hrKC6YjS9XgLa9LaGNictEC_a6zQ",
@@ -10,9 +10,7 @@ const firebaseConfig = {
     messagingSenderId: "480035694387",
     appId: "1:480035694387:web:d900a8a00fb9d55fed8046",
     measurementId: "G-PJB1SBKBQK"
-  };
-
-
+}
   const app = initializeApp(firebaseConfig);
 
 
