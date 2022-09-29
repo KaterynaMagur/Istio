@@ -7,15 +7,18 @@ import { ThemeProvider } from '@mui/material/styles';
 import {theme} from "./theme";
 import {BrowserRouter} from "react-router-dom";
 import {CssBaseline} from "@mui/material";
+import { AuthProvider } from './AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <CssBaseline />
-        <App />
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <CssBaseline />
+          <App />
+        </BrowserRouter>
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from "react";
+import React, {useCallback, useEffect,  useState} from "react";
 import {Typography,Button,CardHeader,Paper,Grid,Box} from "@mui/material";
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import Modal from './Modal.js';
@@ -21,35 +21,33 @@ const CardMonth = () => {
    const [goals,setGoals] = useState([]);
    const [costs,setCosts] = useState([]);
    
-
-
    const getDataFromDB =  async ()=>{
-      
 
-
-      const usersRefIncome =collection(db, `users/${localStorage.getItem('uid')}/incomes`);
+      const usersRefIncome = collection(db, `users/${localStorage.getItem('uid')}/incomes`);
       const usersRefGoal = collection(db, `users/${localStorage.getItem('uid')}/goals`);
       const usersRefCosts = collection(db, `users/${localStorage.getItem('uid')}/costs`);
       
          const income = await  getDocs(usersRefIncome);
-         setIncomes(income.docs
+         setIncome(income.docs
                .map( doc =>({id:doc.id, ...doc.data()}))
                );
-         const goals = await  getDocs(usersRefGoal);
-         setGoals(goals.docs
-               .map(doc =>({id:doc.id, ...doc.data()}))
-               );
-         const costs = await  getDocs(usersRefCosts);
-         setCosts(costs.docs
-               .map(doc =>({id:doc.id, ...doc.data()}))
-               );      
+         // const goals = await  getDocs(usersRefGoal);
+         // setGoals(goals.docs
+         //       .map(doc =>({id:doc.id, ...doc.data()}))
+         //       );
+         // const costs = await  getDocs(usersRefCosts );
+         // setCosts(costs.docs
+         //       .map(doc =>({id:doc.id, ...doc.data()}))
+         //       );
+               
+               
    };
 
-   getDataFromDB();  
-   
-   
-    
-    
+         //   useEffect(()=>{
+         //    getDataFromDB()
+         //    console.log('smth changed');
+         //   },[getDataFromDB]);
+
    
 
 
