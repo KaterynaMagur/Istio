@@ -11,6 +11,7 @@ import {styled} from '@mui/material/styles';
 import {useState} from 'react';
 
 import './IncomeToogleMenuStyle.css';
+import {useData} from "../../../context/DataProvider";
 
 
 const Item = styled(Paper)(({theme}) => ({
@@ -21,9 +22,10 @@ const Item = styled(Paper)(({theme}) => ({
 }));
 
 
-const IncomeToogleMenu = (props) => {
 
-    const {monthsIncome, searchNow, incomeSalaryMonths} = props;
+const IncomeToogleMenu = () => {
+
+    const {monthsIncome, incomeSalaryMonths, searchNow} = useData();
 
     const [changedMonths, setChangedMonths] = useState(searchNow.month);
     const [changedRetail, setChangedRetail] = useState(searchNow.income);

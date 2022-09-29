@@ -4,9 +4,10 @@ import List from "@mui/material/List";
 
 import './IncomeSellingstyle.css';
 import {colors as palette} from "../../../theme";
+import {useData} from "../../../context/DataProvider";
 
 
-const IncomeSelling = (props) => {
+const IncomeSelling = () => {
 
     const {
         incomeSellingJanuary,
@@ -21,15 +22,23 @@ const IncomeSelling = (props) => {
         incomeSellingOctober,
         incomeSellingNovember,
         incomeSellingDecember
-    } = props;
+    } = useData();
 
-    const arrPropsSelling = [];
-    for (const propKey in props) {
-        arrPropsSelling.push(props[propKey]);
-    }
+    const incomeSumma =
+        incomeSellingJanuary +
+        incomeSellingFebruary +
+        incomeSellingMarch +
+        incomeSellingApril +
+        incomeSellingMay +
+        incomeSellingJune +
+        incomeSellingJuly +
+        incomeSellingAugust +
+        incomeSellingSeptember +
+        incomeSellingOctober +
+        incomeSellingNovember +
+        incomeSellingDecember
 
-    const incomeSumma = arrPropsSelling.reduce((acum, secv) => acum + secv);
-    const incomeAverage = incomeSumma / arrPropsSelling.length;
+    const incomeAverage = incomeSumma / 12;
 
     return (
         <Box>

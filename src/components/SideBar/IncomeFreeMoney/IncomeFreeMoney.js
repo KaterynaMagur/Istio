@@ -4,9 +4,11 @@ import List from "@mui/material/List";
 
 import './IncomeFreeMoneyStyle.css';
 import {colors as palette} from "../../../theme";
+import {useData} from "../../../context/DataProvider";
 
 
-const IncomeFreeMoney = (props) => {
+const IncomeFreeMoney = () => {
+
     const {
         incomeFreeMoneyJanuary,
         incomeFreeMoneyFebruary,
@@ -20,15 +22,24 @@ const IncomeFreeMoney = (props) => {
         incomeFreeMoneyOctober,
         incomeFreeMoneyNovember,
         incomeFreeMoneyDecember
-    } = props;
+    } = useData();
 
-    const arrPropsFreeMoney = [];
-    for (const propKey in props) {
-        arrPropsFreeMoney.push(props[propKey]);
-    }
+    const incomeSumma =
+        incomeFreeMoneyJanuary +
+        incomeFreeMoneyFebruary +
+        incomeFreeMoneyMarch +
+        incomeFreeMoneyApril +
+        incomeFreeMoneyMay +
+        incomeFreeMoneyJune +
+        incomeFreeMoneyJuly +
+        incomeFreeMoneyAugust +
+        incomeFreeMoneySeptember +
+        incomeFreeMoneyOctober +
+        incomeFreeMoneyNovember +
+        incomeFreeMoneyDecember
 
-    const incomeSumma = arrPropsFreeMoney.reduce((acum, secv) => acum + secv);
-    const incomeAverage = incomeSumma / arrPropsFreeMoney.length;
+    const incomeAverage = incomeSumma / 12;
+
     return (
         <Box>
             <Typography variant="h4" component="div" gutterBottom

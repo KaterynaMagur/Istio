@@ -4,9 +4,10 @@ import List from "@mui/material/List";
 
 import './IncomeDepositsStyle.css';
 import {colors as palette} from "../../../theme";
+import {useData} from "../../../context/DataProvider";
 
 
-const IncomeDeposits = (props) => {
+const IncomeDeposits = () => {
 
     const {
         incomeDepositsJanuary,
@@ -21,16 +22,22 @@ const IncomeDeposits = (props) => {
         incomeDepositsOctober,
         incomeDepositsNovember,
         incomeDepositsDecember
-    } = props;
+    } = useData();
 
-    const arrPropsDeposits = [];
-    for (const propKey in props) {
-        arrPropsDeposits.push(props[propKey]);
-    }
+    const incomeSumma = incomeDepositsJanuary +
+        incomeDepositsFebruary +
+        incomeDepositsMarch +
+        incomeDepositsApril +
+        incomeDepositsMay +
+        incomeDepositsJune +
+        incomeDepositsJuly +
+        incomeDepositsAugust +
+        incomeDepositsSeptember +
+        incomeDepositsOctober +
+        incomeDepositsNovember +
+        incomeDepositsDecember
 
-
-    const incomeSumma = arrPropsDeposits.reduce((acum, secv) => acum + secv);
-    const incomeAverage = incomeSumma / arrPropsDeposits.length;
+    const incomeAverage = incomeSumma / 12;
 
 
     return (

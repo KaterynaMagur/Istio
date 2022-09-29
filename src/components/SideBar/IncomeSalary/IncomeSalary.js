@@ -5,9 +5,11 @@ import Button from "@mui/material/Button";
 
 import './IncomeSalaryStyle.css';
 import {colors as palette} from "../../../theme";
+import {useData} from "../../../context/DataProvider";
 
 
-const IncomeSalary = (props) => {
+const IncomeSalary = () => {
+
     const {
         incomeJanuary,
         incomeFebruary,
@@ -22,32 +24,35 @@ const IncomeSalary = (props) => {
         incomeNovember,
         incomeDecember,
         incomeSalaryYear,
-        setIncomeSalaryYear,
-    } = props;
+        setIncomeSalaryYear
+    } = useData();
 
+    const incomeSumma = incomeJanuary +
+        incomeFebruary +
+        incomeMarch +
+        incomeApril +
+        incomeMay +
+        incomeJune +
+        incomeJuly +
+        incomeAugust +
+        incomeSeptember +
+        incomeOctober +
+        incomeNovember +
+        incomeDecember
 
-    const arrProps = [];
-    for (const propKey in props) {
-        if (propKey !== 'incomeSalaryYear' && propKey !== 'setIncomeSalaryYear') {
-            arrProps.push(props[propKey]);
-        }
-    }
-
-    const incomeSumma = arrProps.reduce((acum, secv) => acum + secv);
-    const incomeAverage = incomeSumma / arrProps.length;
-
+    const incomeAverage = incomeSumma / 12;
 
     const prevYear = () => {
-        if (incomeSalaryYear > 2020){
-        setIncomeSalaryYear(incomeSalaryYear - 1);
+        if (incomeSalaryYear > 2020) {
+            setIncomeSalaryYear(incomeSalaryYear - 1);
         } else {
             alert('Застарілий рік!!!');
         }
     }
 
     const nextYear = () => {
-        if (incomeSalaryYear <= 2021){
-        setIncomeSalaryYear(incomeSalaryYear + 1);
+        if (incomeSalaryYear <= 2021) {
+            setIncomeSalaryYear(incomeSalaryYear + 1);
         } else {
             alert('Такий рік ще не настав!!!');
         }
