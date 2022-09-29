@@ -156,7 +156,6 @@ const DataProvider = ({children}) => {
             selling: incomeSellingJanuary,
             freeMoney: incomeFreeMoneyJanuary,
             summa: incomeSumJanuary,
-
         },
         {
             month: 'Лютий',
@@ -332,7 +331,6 @@ const DataProvider = ({children}) => {
         incomeFreeMoneyAugust, incomeFreeMoneySeptember, incomeFreeMoneyOctober, incomeFreeMoneyNovember,
         incomeFreeMoneyDecember
     };
-
 
     return (
         <div>
