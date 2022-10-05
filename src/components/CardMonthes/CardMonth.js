@@ -23,7 +23,7 @@ const CardMonth = () => {
    
 
 
-   const getDataFromDB =  async ()=>{
+  /*  const getDataFromDB =  async ()=>{
       
 
 
@@ -47,7 +47,7 @@ const CardMonth = () => {
 
    getDataFromDB();  
    
-   
+   */
     
     
    
