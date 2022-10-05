@@ -21,22 +21,5 @@ const firebaseConfig = {
   const provider = new GoogleAuthProvider();
 
   export const signInWithGoogle =()=>{
-      signInWithPopup(auth,provider)
-      .then((result)=>{
-        const name = result.user.displayName;
-        const email = result.user.email;
-        const profilePic = result.user.photoURL;
-        const userUID = result.user.uid;
-        console.log(result);
-        console.log(userUID);
-        
-        
-        localStorage.setItem('uid', userUID);
-        localStorage.setItem('name', name);
-        localStorage.setItem('email', email);
-        localStorage.setItem('profilePic',profilePic);
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
+      signInWithPopup(auth,provider);
   };

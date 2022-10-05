@@ -8,6 +8,7 @@ import moment from 'moment';
 
 import { collection, getDocs, query, where} from "firebase/firestore"; 
 import {db} from "../../firebase-config";
+import {useAuth} from "../../AuthContext"; 
 import "./style.css";
 
 
@@ -17,40 +18,51 @@ import "./style.css";
 const CardMonth = () => {
    const [modalActive, setModalActive] = useState(false);
 
+   const {currentUser} = useAuth();
+
    const [incomes,setIncomes] = useState([]);
    const [goals,setGoals] = useState([]);
    const [costs,setCosts] = useState([]);
-   
-   const getDataFromDB =  async ()=>{
 
-      const usersRefIncome = collection(db, `users/${localStorage.getItem('uid')}/incomes`);
-      const usersRefGoal = collection(db, `users/${localStorage.getItem('uid')}/goals`);
-      const usersRefCosts = collection(db, `users/${localStorage.getItem('uid')}/costs`);
+   
+ 
+  
+  
+   const getDataFromDB =  useCallback (async ()=>{
+
+      const usersRefIncome = collection(db, `users/${currentUser.uid}/incomes`);
+      const usersRefGoal = collection(db, `users/${currentUser.uid}/goals`);
+      const usersRefCosts = collection(db, `users/${currentUser.uid}/costs`);
       
          const income = await  getDocs(usersRefIncome);
-         setIncome(income.docs
+            setIncomes(income.docs
                .map( doc =>({id:doc.id, ...doc.data()}))
                );
-         // const goals = await  getDocs(usersRefGoal);
-         // setGoals(goals.docs
-         //       .map(doc =>({id:doc.id, ...doc.data()}))
-         //       );
-         // const costs = await  getDocs(usersRefCosts );
-         // setCosts(costs.docs
-         //       .map(doc =>({id:doc.id, ...doc.data()}))
-         //       );
+              const goals = await  getDocs(usersRefGoal);
+              setGoals(goals.docs
+                  .map(doc =>({id:doc.id, ...doc.data()}))
+                  );
+              const costs = await  getDocs(usersRefCosts );
+              setCosts(costs.docs
+                  .map(doc =>({id:doc.id, ...doc.data()}))
+                  );
+                 
+         },[setIncomes, setGoals, setCosts]);
                
-               
-   };
+         
+                 useEffect(()=>{
+                    getDataFromDB().finally();
+                    console.log(incomes);
+                    console.log(goals);
+                    console.log(costs); 
+                 },[getDataFromDB]);
 
-         //   useEffect(()=>{
-         //    getDataFromDB()
-         //    console.log('smth changed');
-         //   },[getDataFromDB]);
-
-   
+         
 
 
+
+
+           
 
 
    return (
