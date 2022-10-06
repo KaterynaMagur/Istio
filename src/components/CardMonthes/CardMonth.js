@@ -6,6 +6,7 @@ import Modal from './Modal.js';
 import { collection, getDocs, query, where} from "firebase/firestore"; 
 import {db} from "../../firebase-config";
 import {useAuth} from "../../context/AuthContext"; 
+
 import "./style.css";
 
 
