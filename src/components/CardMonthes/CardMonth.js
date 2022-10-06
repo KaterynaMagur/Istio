@@ -48,11 +48,11 @@ const CardMonth = () => {
          },[setIncomes, setCosts]);
                
           
-                  //  useEffect(()=>{
-                  //     getDataFromDB().finally();
-                  //    console.log(incomes); 
-                  //      console.log(costs); 
-                  //  },[getDataFromDB]);
+                   //  useEffect(()=>{
+                   //     getDataFromDB().finally();
+                   //    console.log(incomes); 
+                   //      console.log(costs); 
+                   //  },[getDataFromDB]);
 
          
 
