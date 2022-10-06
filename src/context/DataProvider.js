@@ -1,13 +1,18 @@
 import React, {useCallback, useContext, useEffect, useMemo, useState} from 'react';
 import {createContext} from "react";
 import moment from "moment";
-import {collection, getDocs} from "firebase/firestore";
+import {collection, getDocs, query, where} from "firebase/firestore";
 import {db} from "../firebase-config";
 
 
 export const DataContext = createContext(null);
 export  const useData = () => useContext(DataContext);
 
+const getPeriod = (year) => {
+    const start = moment().year(year).startOf('year').toDate();
+    const end = moment().year(year).endOf('year').toDate();
+    return {start, end}
+}
 
 const getEnglishMonths = () => {
     const locale = moment.locale();
@@ -88,9 +93,11 @@ const DataProvider = ({children}) => {
         const usersRefGoal = collection(db, `users/${localStorage.getItem('uid')}/goals`);
         const usersRefCosts = collection(db, `users/${localStorage.getItem('uid')}/costs`);
 
-        const income = await getDocs(usersRefIncome);
+        const {start, end} = getPeriod(incomeSalaryYear);
 
-    }, []);
+        const incomes2022 = query(usersRefIncome, where("date", ">", start), where("date", "<", end));
+
+    }, [incomeSalaryYear]);
 
     useEffect(() => {
         getDataFromDB().finally();
