@@ -11,15 +11,29 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {signInWithGoogle} from '../../firebase-config';
+import { useAuth } from '../../context/AuthContext';
 
 import {useForm} from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './../LoginForm/LoginForm.css';
+
+
+  const clearUserState = { email: '', password: '', password2: '' };
+  const initialLoginForm = {email: '', password: ''};
 
 export default function LoginForm() {
 
     const [authMode, setAuthMode] = useState("signin");
+
+    const { signUp } = useAuth();
+    const {login} = useAuth();
+    const {signInWithGoogle} = useAuth();
+
+    const [userForm, setUserForm] = useState(clearUserState);
+    const [loginForm, setLoginForm] = useState(initialLoginForm);
+    
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
     const changeAuthMode = () => {
         setAuthMode(authMode === "signin" ? "signup" : "signin");
@@ -35,24 +49,67 @@ export default function LoginForm() {
       setAuthMode(authMode === "signin" ? "loginwithGoogle" : "signin");
       reset();
   }
+    
+
+   
+
+    useEffect(() => {
+      setUserForm(clearUserState);
+    }, []);
+  
+    const handleLogin = async () => {
+      const {email, password} = loginForm;
+      if (!password || !email) {
+        return setError("Please input credentials");
+      }
+      setError('');
+      setLoading(true);
+      try {
+        await login({email, password});
+      } catch (e) {
+        const err = e;
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+  
+    const handleChange = ({target: {value, name}}) => {
+      setError('');
+      setLoginForm({...loginForm, [name]: value});
+    }
+    const handleChangeSign = ({ target: { value, name } }) => {
+      setError('');
+      setUserForm({ ...userForm, [name]: value });
+    }
 
     //react-hook-form settings
     const {
         register,
-        formState : {
-            errors,
-        },
-        handleSubmit,
         reset,
     } = useForm({
         mode: 'onChange'
     });
 
     //sent data to server on buttonClick
-    const onSubmit = (data) => {
-        alert(JSON.stringify(data));
-        reset();
+    const handleSubmit = async() => {
+      const { email, password, password2 } = userForm;
+      if (password !== password2) {
+        return setError("Passwords do not match");
+      }
+      setLoading(true);
+      setError('');
+      try {
+        await signUp({ email, password });
+      } catch (e) {
+        const err = e;
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     }
+    
+
 
     // render SignIn form
     if (authMode === "signin") {
@@ -85,16 +142,20 @@ export default function LoginForm() {
                 <LockOutlinedIcon />
               </Avatar>
               <Typography component="h1" variant="h5" >
-                Sign in
+                 Login
               </Typography>
     
-              <Box component="form" onSubmit={handleSubmit(onSubmit)}  sx={{ mt: 1 }}>
+              <Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
                 <TextField 
                   margin="dense"
                   fullWidth
+                  name="email"
+                  type='email'
+                  onChange={handleChange}
+                  value={loginForm.email}
                   id="email"
                   label="Email Address"
-                  name="email"
+                  
                   autoComplete="off"
                   autoFocus
                   size="small"
@@ -106,11 +167,13 @@ export default function LoginForm() {
                     }
                   })}
                 />
-                {errors.userLogin && <p className="errorMessage">{errors?.userLogin?.message}</p>}
+                
     
                 <TextField
                   margin="dense"
                   fullWidth
+                  onChange={handleChange}
+                  value={loginForm.password}
                   name="password"
                   label="Password"
                   type="password"
@@ -119,14 +182,16 @@ export default function LoginForm() {
                   size="small"
                   {...register('userPassword', {required : true})}
                 />
-                {errors.userPassword && <p className="errorMessage">Обовязкове поле для заповнення</p>}
+                
     
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Запам'ятати мене"
                 />
                 <Button
+                  disabled={loading}
                   type="submit"
+                  onClick={handleLogin}
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
@@ -191,7 +256,7 @@ export default function LoginForm() {
                Reset Password
               </Typography>
     
-              <Box component="form" onSubmit={handleSubmit(onSubmit)}  sx={{ mt: 1 }}>
+              <Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
                 <TextField 
                   margin="dense"
                   fullWidth
@@ -209,7 +274,7 @@ export default function LoginForm() {
                     }
                   })}
                 />
-                {errors.userLogin && <p className="errorMessage">{errors?.userLogin?.message}</p>}
+                
     
                 <Button
                   type="submit"
@@ -266,32 +331,39 @@ export default function LoginForm() {
                     Sign Up
                 </Typography>
 
-                <Box component="form" onSubmit={handleSubmit(onSubmit)}  sx={{ mt: 1 }}>
+                <Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
                 <TextField 
                     margin="dense"
                     fullWidth
-                    id="UserName"
-                    label="User Name"
-                    name="userName"
-                    autoComplete="off"
-                    autoFocus
-                    size="small"
-                    {...register('UserName', {
-                        required : "Обовязкове поле для заповнення",
-                    })}
-                    />
-                    {errors.UserName && <p className="errorMessage">{errors.UserName.message}</p>}
-                    
-                    <TextField 
-                    margin="dense"
-                    fullWidth
                     id="email"
+
+                    onChange={handleChangeSign}
+                    value={userForm.email}
                     label="Email Address"
                     name="email"
+                    type='email'
                     autoComplete="off"
                     autoFocus
                     size="small"
                     {...register('userLogin', {
+                        required : "Обовязкове поле для заповнення",
+                    })}
+                    />
+                    
+                    
+                    <TextField 
+                    margin="dense"
+                    fullWidth
+                   
+                    onChange={handleChangeSign}
+                    value={userForm.password}
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    size="small"
+                    {...register('userPassword', {
                         required : "Обовязкове поле для заповнення",
                         pattern: {
                         value: /\S+@\S+\.\S+/,
@@ -299,11 +371,13 @@ export default function LoginForm() {
                         }
                     })}
                     />
-                    {errors.userLogin && <p className="errorMessage">{errors?.userLogin?.message}</p>}
+                  
 
                     <TextField
                     margin="dense"
                     fullWidth
+                    onChange={handleChangeSign}
+                    value={userForm.password2}
                     name="password"
                     label="Password"
                     type="password"
@@ -312,15 +386,17 @@ export default function LoginForm() {
                     size="small"
                     {...register('userPassword', {required : true})}
                     />
-                    {errors.userPassword && <p className="errorMessage">Обовязкове поле для заповнення</p>}
+                  
 
                     <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
                     label="Запам'ятати мене"
                     />
                     <Button
+                    disabled={loading}
                     type="submit"
                     fullWidth
+                    onClick={handleSubmit}
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                     >
@@ -376,7 +452,7 @@ export default function LoginForm() {
               Google логінація
             </Typography>
   
-            <Box component="form" onSubmit={handleSubmit(onSubmit)}  sx={{ mt: 1 }}>
+            <Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
               <Button
                 type="submit"
                 fullWidth

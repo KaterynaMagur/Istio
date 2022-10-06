@@ -16,6 +16,9 @@ import {NavLink} from "react-router-dom";
 import LoginForm from '../LoginForm/LoginForm'
 import './Header.css';
 
+import { useAuth } from '../../context/AuthContext';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 const routes = [
   {label: "IstIo", url: "dashboard"},
@@ -77,8 +80,11 @@ const Nav = styled('nav')`
 
 
  const Header = (props) => {
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const {currentUser, logOut} = useAuth();
+  
 
-  const [showLoginForm, setShowLoginForm] = React.useState(false);
+  
 
   const showForm = () => {
     setShowLoginForm(showForm => !showForm);
@@ -130,13 +136,18 @@ const Nav = styled('nav')`
               </Badge>
             </IconButton>
             </Tooltip>
-
-            <Tooltip title="Open settings">
-              <IconButton color="inherit" onClick={showForm } >
-                <img className='imgLogin' src={localStorage.getItem('profilePic')}></img>
-              </IconButton>
-            </Tooltip>
-            
+             
+              <Tooltip title="Open settings">
+                <IconButton color="inherit" onClick={showForm } >
+                { currentUser===null ? <AccountCircle />:
+                  <img className='imgLogin' src={currentUser.photoURL}></img>}
+                </IconButton>
+              </Tooltip>
+              
+               {currentUser === null ? null : <Tooltip title="Logout">
+                  <IconButton onClick={logOut} color="inherit"><LogoutIcon /></IconButton>
+                 </Tooltip>}
+              
           </Box>
         </Toolbar>
       </AppBar>

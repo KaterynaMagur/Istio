@@ -7,7 +7,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import {theme} from "./theme";
 import {BrowserRouter} from "react-router-dom";
 import {CssBaseline} from "@mui/material";
-import { AuthProvider } from './AuthContext';
+import { AuthProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

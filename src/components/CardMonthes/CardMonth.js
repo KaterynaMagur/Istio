@@ -3,12 +3,9 @@ import {Typography,Button,CardHeader,Paper,Grid,Box} from "@mui/material";
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import Modal from './Modal.js';
 
-import moment from 'moment';
-
-
 import { collection, getDocs, query, where} from "firebase/firestore"; 
 import {db} from "../../firebase-config";
-import {useAuth} from "../../AuthContext"; 
+import {useAuth} from "../../context/AuthContext"; 
 import "./style.css";
 
 
@@ -32,30 +29,29 @@ const CardMonth = () => {
 
       const usersRefIncome = collection(db, `users/${currentUser.uid}/incomes`);
       const usersRefGoal = collection(db, `users/${currentUser.uid}/goals`);
-      const usersRefCosts = collection(db, `users/${currentUser.uid}/costs`);
+      const usersRefCosts = collection(db, `users/${currentUser.uid}/costs`); 
       
          const income = await  getDocs(usersRefIncome);
             setIncomes(income.docs
                .map( doc =>({id:doc.id, ...doc.data()}))
                );
-              const goals = await  getDocs(usersRefGoal);
-              setGoals(goals.docs
-                  .map(doc =>({id:doc.id, ...doc.data()}))
-                  );
+               // const goals = await  getDocs(usersRefGoal);
+               // setGoals(goals.docs
+               //     .map(doc =>({id:doc.id, ...doc.data()}))
+               //     );
               const costs = await  getDocs(usersRefCosts );
               setCosts(costs.docs
                   .map(doc =>({id:doc.id, ...doc.data()}))
                   );
                  
-         },[setIncomes, setGoals, setCosts]);
+         },[setIncomes, setCosts]);
                
-         
-                 useEffect(()=>{
-                    getDataFromDB().finally();
-                    console.log(incomes);
-                    console.log(goals);
-                    console.log(costs); 
-                 },[getDataFromDB]);
+          
+                  //  useEffect(()=>{
+                  //     getDataFromDB().finally();
+                  //    console.log(incomes); 
+                  //      console.log(costs); 
+                  //  },[getDataFromDB]);
 
          
 

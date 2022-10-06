@@ -10,6 +10,7 @@ import moment from 'moment';
 
 import { addDoc, collection, doc, getDocs, setDoc, query, where} from "firebase/firestore"; 
 import {db} from "../../firebase-config";
+import { useAuth } from "../../context/AuthContext";
 
 
 const ariaLabel = {'aria-label': 'description'};
@@ -23,6 +24,7 @@ const currentDate = moment().format('LLLL');
 
 
 const Modal = ({active, setActive}) => {
+    const {currentUser} = useAuth();
     const [showSelect, setShowSelect] = useState('Дохід');
     const [selectIncome,setSelectIncome]=useState('Заробітня Плата');
     const [selectCost,setSelectCost]=useState('Продукти');
@@ -38,16 +40,16 @@ const hadleChange = (event) =>{
         const usersRef = collection(db,'users');
         
 
-            const usersRefInccome =collection(db, `users/${localStorage.getItem('uid')}/incomes`);
-            const usersRefGoal = collection(db, `users/${localStorage.getItem('uid')}/goals`);
-            const usersRefCosts = collection(db, `users/${localStorage.getItem('uid')}/costs`);
+            const usersRefInccome =collection(db, `users/${currentUser.uid}/incomes`);
+            const usersRefGoal = collection(db, `users/${currentUser.uid}/goals`);
+            const usersRefCosts = collection(db, `users/${currentUser.uid}/costs`);
         
         
     
-        await  setDoc(doc(usersRef, localStorage.getItem('uid')),{
-            email: localStorage.getItem('email'),
+        await  setDoc(doc(usersRef, currentUser.uid),{
+            email: currentUser.email,
             password: 321,
-            userName: localStorage.getItem('name'),
+            userName: currentUser.displayName,
         });
         {showSelect === 'Дохід' &&
          await addDoc(usersRefInccome,  {
