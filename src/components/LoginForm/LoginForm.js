@@ -57,24 +57,8 @@ export default function LoginForm() {
       setUserForm(clearUserState);
     }, []);
   
-    const handleLogin = async () => {
-      const {email, password} = loginForm;
-      if (!password || !email) {
-        return setError("Please input credentials");
-      }
-      setError('');
-      setLoading(true);
-      try {
-        await login({email, password});
-      } catch (e) {
-        const err = e;
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
   
-    const handleChange = ({target: {value, name}}) => {
+    const handleChangeLogin = ({target: {value, name}}) => {
       setError('');
       setLoginForm({...loginForm, [name]: value});
     }
@@ -85,14 +69,30 @@ export default function LoginForm() {
 
     //react-hook-form settings
     const {
-        register,
         reset,
     } = useForm({
         mode: 'onChange'
     });
 
+    const handleLogin = async () => {
+      const {email, password} = loginForm;
+      if (!password || !email) {
+        return setError("Please input credentials");
+      }
+      setError('');
+      setLoading(true);
+      try {
+        await login({email, password});
+      } catch (e) {
+        const err = e ;
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
     //sent data to server on buttonClick
-    const handleSubmit = async() => {
+    const handleSubmitSignUp = async() => {
       const { email, password, password2 } = userForm;
       if (password !== password2) {
         return setError("Passwords do not match");
@@ -145,45 +145,38 @@ export default function LoginForm() {
                  Login
               </Typography>
     
-              <Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
+              <Box component="form"   sx={{ mt: 1 }}>
                 <TextField 
                   margin="dense"
                   fullWidth
                   name="email"
                   type='email'
-                  onChange={handleChange}
                   value={loginForm.email}
+                  onChange={handleChangeLogin}
                   id="email"
                   label="Email Address"
                   
                   autoComplete="off"
                   autoFocus
                   size="small"
-                  {...register('userLogin', {
-                    required : "Обовязкове поле для заповнення",
-                    pattern: {
-                      value: /\S+@\S+\.\S+/,
-                      message: "Введіть валідну пошту"
-                    }
-                  })}
                 />
                 
     
                 <TextField
                   margin="dense"
                   fullWidth
-                  onChange={handleChange}
                   value={loginForm.password}
+                  onChange={handleChangeLogin}
                   name="password"
                   label="Password"
                   type="password"
                   id="password"
                   autoComplete="current-password"
                   size="small"
-                  {...register('userPassword', {required : true})}
+                  
                 />
                 
-    
+                {<Typography my={2} color={'red'}>{error}</Typography>}
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Запам'ятати мене"
@@ -256,7 +249,7 @@ export default function LoginForm() {
                Reset Password
               </Typography>
     
-              <Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
+              <Box component="form"  sx={{ mt: 1 }}>
                 <TextField 
                   margin="dense"
                   fullWidth
@@ -266,15 +259,8 @@ export default function LoginForm() {
                   autoComplete="off"
                   autoFocus
                   size="small"
-                  {...register('userLogin', {
-                    required : "Обовязкове поле для заповнення",
-                    pattern: {
-                      value: /\S+@\S+\.\S+/,
-                      message: "Введіть валідну пошту"
-                    }
-                  })}
                 />
-                
+                {<Typography my={2} color={'red'}>{error}</Typography>}
     
                 <Button
                   type="submit"
@@ -331,7 +317,7 @@ export default function LoginForm() {
                     Sign Up
                 </Typography>
 
-                <Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
+                <Box component="form"  sx={{ mt: 1 }}>
                 <TextField 
                     margin="dense"
                     fullWidth
@@ -342,61 +328,48 @@ export default function LoginForm() {
                     label="Email Address"
                     name="email"
                     type='email'
-                    autoComplete="off"
                     autoFocus
                     size="small"
-                    {...register('userLogin', {
-                        required : "Обовязкове поле для заповнення",
-                    })}
                     />
                     
                     
                     <TextField 
                     margin="dense"
                     fullWidth
-                   
-                    onChange={handleChangeSign}
                     value={userForm.password}
+                    onChange={handleChangeSign}
                     name="password"
                     label="Password"
                     type="password"
                     id="password"
-                    autoComplete="current-password"
                     size="small"
-                    {...register('userPassword', {
-                        required : "Обовязкове поле для заповнення",
-                        pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: "Введіть валідну пошту"
-                        }
-                    })}
                     />
                   
 
                     <TextField
                     margin="dense"
                     fullWidth
-                    onChange={handleChangeSign}
                     value={userForm.password2}
-                    name="password"
-                    label="Password"
+                    onChange={handleChangeSign}
+                    name="password2"
+                    label="Password2"
                     type="password"
-                    id="password"
-                    autoComplete="current-password"
+                    id="password2"
                     size="small"
-                    {...register('userPassword', {required : true})}
                     />
-                  
+              
+                  {<Typography my={2} color={'red'}>{error}</Typography>}
 
                     <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
                     label="Запам'ятати мене"
                     />
+                    
                     <Button
                     disabled={loading}
                     type="submit"
                     fullWidth
-                    onClick={handleSubmit}
+                    onClick={handleSubmitSignUp}
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                     >
@@ -452,7 +425,7 @@ export default function LoginForm() {
               Google логінація
             </Typography>
   
-            <Box component="form" onSubmit={handleSubmit}  sx={{ mt: 1 }}>
+            <Box component="form" sx={{ mt: 1 }}>
               <Button
                 type="submit"
                 fullWidth
